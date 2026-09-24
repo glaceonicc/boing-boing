@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://de03v8q1a15ki"]
+
+[ext_resource type="Texture2D" uid="uid://dexduommxef65" path="res://textures/boingy.png" id="1_5urir"]
+[ext_resource type="Script" uid="uid://bfyibqbcj1bwe" path="res://scripts/player.gd" id="1_sf2tj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf2tj"]
+atlas = ExtResource("1_5urir")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf2tj")
+}],
+"loop": 1,
+"name": &"down",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(14, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_veuqq"]
+size = Vector2(12, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(8, 6)
+
+[node name="player" type="CharacterBody2D" unique_id=1095499475]
+script = ExtResource("1_sf2tj")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1506881017]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"down"
+
+[node name="destroycollision" type="CollisionShape2D" parent="." unique_id=1862094084]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_57qmd")
+debug_color = Color(0.99798304, 0.70814145, 0.469137, 0.41960785)
+
+[node name="groundcollision" type="CollisionShape2D" parent="." unique_id=1812347329]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_veuqq")
+
+[node name="wallcollision" type="CollisionShape2D" parent="." unique_id=26981508]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0, 0, 0.41960785)

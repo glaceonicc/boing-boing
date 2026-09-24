@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ps8ipecssiew"]
+
+[ext_resource type="Texture2D" uid="uid://doshmuybyoirw" path="res://textures/titlebig.png" id="1_m63cx"]
+[ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/life.png" id="2_jdpk4"]
+[ext_resource type="Texture2D" uid="uid://dvc67rmna63rb" path="res://textures/heart.png" id="3_x5t6h"]
+
+[node name="menu_main" type="Node2D" unique_id=6269003]
+
+[node name="Titlebig" type="Sprite2D" parent="." unique_id=150773835]
+position = Vector2(144.00002, 81)
+scale = Vector2(0.09599999, 0.162)
+texture = ExtResource("1_m63cx")
+
+[node name="play" type="Button" parent="." unique_id=2129421906]
+offset_left = 98.0
+offset_top = 58.0
+offset_right = 183.0
+offset_bottom = 89.0
+text = "play (test)"
+
+[node name="settings" type="Button" parent="." unique_id=1565950023]
+offset_left = 236.0
+offset_top = 1.0
+offset_right = 260.0
+offset_bottom = 32.0
+icon = ExtResource("2_jdpk4")
+
+[node name="credits" type="Button" parent="." unique_id=1428258105]
+offset_left = 262.0
+offset_right = 286.0
+offset_bottom = 31.0
+icon = ExtResource("3_x5t6h")
