@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://ps8ipecssiew"]
 
 [ext_resource type="Texture2D" uid="uid://doshmuybyoirw" path="res://textures/titlebig.png" id="1_m63cx"]
+[ext_resource type="Script" uid="uid://c1bd1hq311hdo" path="res://scripts/menu_main.gd" id="1_x5t6h"]
 [ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/life.png" id="2_jdpk4"]
 [ext_resource type="Texture2D" uid="uid://dvc67rmna63rb" path="res://textures/heart.png" id="3_x5t6h"]
 
 [node name="menu_main" type="Node2D" unique_id=6269003]
+script = ExtResource("1_x5t6h")
 
 [node name="Titlebig" type="Sprite2D" parent="." unique_id=150773835]
 position = Vector2(144.00002, 81)

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cwnjbs3am5sqq"]
+
+[ext_resource type="Texture2D" uid="uid://dd7fu807c6mov" path="res://textures/block.png" id="1_5jjff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 16)
+
+[node name="floorblock" type="Area2D" unique_id=1294998557 groups=["ground"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=678464128]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Block" type="Sprite2D" parent="." unique_id=142071343]
+texture = ExtResource("1_5jjff")
