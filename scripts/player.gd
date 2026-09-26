@@ -50,6 +50,11 @@ func _physics_process(delta: float) -> void:
 		vel_y = 0
 		
 	move_and_slide()
+	if ground == 0:
+		$shadow.visible = false
+	else:
+		$shadow.visible = true
+	gl.play_y = position.y
 
 # if you're touching at least one ground tile that means you are standing on the ground!
 func _on_g_area_entered(area: Area2D) -> void:
