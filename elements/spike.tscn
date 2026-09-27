@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://xtcdiqqff8u3"]
+
+[ext_resource type="Texture2D" uid="uid://dwegfxddm53ah" path="res://textures/elements/spikes.png" id="1_xpaug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(14, 14)
+
+[node name="spike" type="Area2D" unique_id=143202304 groups=["spike"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=889452847]
+texture = ExtResource("1_xpaug")
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=1865350960]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.99861974, 0, 0.14905396, 0.41960785)

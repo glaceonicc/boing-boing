@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://6xxfmcituid5"]
+
+[ext_resource type="Texture2D" uid="uid://mxmplj0fa72u" path="res://textures/tiles/wall.png" id="1_yre3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 16)
+
+[node name="wallblock" type="StaticBody2D" unique_id=1714314068]
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=343307427]
+texture = ExtResource("1_yre3y")
+
+[node name="ground" type="Area2D" parent="." unique_id=1541286817 groups=["wallground"]]
+
+[node name="hitbox" type="CollisionShape2D" parent="ground" unique_id=1446832799]
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=2139499230]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.30879307, 0.68974847, 0.41960785)

@@ -5,6 +5,8 @@ extends Node
 
 var play_x
 var play_y
+var play_elevation
+var checkpointnew
 var time
 var max_y
 var hearts = 3
@@ -14,6 +16,10 @@ var star1
 var star2
 var star3
 var goldenflowers = 0
+
+
+
+signal die
 
 
 func _ready() -> void:

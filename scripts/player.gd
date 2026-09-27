@@ -9,9 +9,13 @@ var SPEED = 800.0 # the thing to multiply the velocity things by
 var JUMP_VELOCITY = 4.0 # like how high you jump i guess??
 var elevation = 0 # simulates position.y kinda i think. like position.y is now z and this is the y instead.
 var vel_y = 0# velocity.y. but like. i made it.
-var ground: int
+var ground: int # how many ground tiles are you on
 var gravity = 10 #heheha i made gravity im newton
-var bounce = false
+var bounce = false # checks if you're in a bouncer
+var spike: int # how many spike tiles are you on
+
+var checkpoint_x
+var checkpoint_y
 
 var active = false # if you started playing (press space to start)
 
@@ -25,6 +29,9 @@ var active = false # if you started playing (press space to start)
 func _ready() -> void:
 	position.x = startpos_x
 	position.y = startpos_y
+	checkpoint_x = startpos_x
+	checkpoint_y = startpos_y
+	gl.checkpointnew = false
 	gl.time = time
 	gl.max_y = max_y
 	$sprite.play("sprout")
@@ -53,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		# and JUMP_VELOCITY is what you add to velocity to jump
 		# and gravity. the thing that pulls you to the ground and makes you not want to get up anymore.
 		
-		# i searched "how to make gravity" on the internet in order to understand this stuff
+		# i searched "how to make gravity" on the internet in order to understand this stuff ;-;
 		
 		if ground >= 1 and elevation == 0:
 			if Input.is_action_just_pressed("jump"):
@@ -66,11 +73,17 @@ func _physics_process(delta: float) -> void:
 			vel_y = 5.0
 		else:
 			vel_y -= gravity * delta
+		
+		if elevation == 0 and spike >= 1:
+			die()
+		
 		elevation = floor(elevation + vel_y)
 		$sprite.position.y = - elevation
 		if elevation <= -500:
+			die()
 			elevation = 0
 			vel_y = 0
+			
 		
 
 			
@@ -88,8 +101,10 @@ func _physics_process(delta: float) -> void:
 			$shadow.visible = true
 			DisplayServer.window_set_title(levelname)
 			$timer.start()
+	gl.play_x = position.x
 	gl.play_y = position.y
-	print(str(bounce)+str(elevation))
+	gl.play_elevation = elevation
+	print(str(elevation))
 
 # if you're touching at least one ground tile that means you are standing on the ground!
 func _on_g_area_entered(area: Area2D) -> void:
@@ -108,3 +123,18 @@ func _on_g_area_exited(area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	gl.time -= 1
+
+
+func _on_death_area_entered(area: Area2D) -> void:
+	if area.is_in_group("spike"):
+		spike += 1
+
+
+func _on_death_area_exited(area: Area2D) -> void:
+	if area.is_in_group("spike"):
+		spike -= 1
+
+func die():
+	gl.emit_signal("die")
+	position.x = checkpoint_x
+	position.y = checkpoint_y
