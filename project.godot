@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 [global_group]
 
 ground="ground tiles that you can walk on"
+bouncer="for the bouncer flower that bounces you up like a trampoline!"
 
 [input]
 

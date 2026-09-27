@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b4kp0aw6wvynk"]
+
+[ext_resource type="Texture2D" uid="uid://b27aljjulv88k" path="res://textures/bouncer.png" id="1_fovne"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdc2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fovne")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(18, 16)
+
+[node name="bouncer" type="Area2D" unique_id=385185766 groups=["bouncer"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1035274506]
+sprite_frames = SubResource("SpriteFrames_qdc2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1872638795]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.60239804, 0.54021364, 0.14789903, 0.41960785)

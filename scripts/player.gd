@@ -11,57 +11,90 @@ var elevation = 0 # simulates position.y kinda i think. like position.y is now z
 var vel_y = 0# velocity.y. but like. i made it.
 var ground: int
 var gravity = 10 #heheha i made gravity im newton
+var bounce = false
+
+var active = false # if you started playing (press space to start)
+
+@export var startpos_x = 0
+@export var startpos_y = 64
+
+@export var levelname: String
+
+func _ready() -> void:
+	position.x = startpos_x
+	position.y = startpos_y
+	$sprite.play("sprout")
+	DisplayServer.window_set_title("PRESS SPACE TO START")
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("left"):
-		velocity.x = move_toward(velocity.x, -150, SPEED * delta)
-	elif Input.is_action_pressed("right"):
-		velocity.x = move_toward(velocity.x, 150, SPEED * delta)
-	else:
-		velocity.x = move_toward(velocity.x, 0, 1.5 * SPEED * delta)
-	
-	if Input.is_action_pressed("up"):
-		velocity.y = move_toward(velocity.y, -150, SPEED * delta)
-	elif Input.is_action_pressed("down"):
-		velocity.y = move_toward(velocity.y, 150, SPEED * delta)
-	else:
-		velocity.y = move_toward(velocity.y, 0, 1.5 * SPEED * delta)
-	
-	#ahhhhhhh how to physics
-	# so like: elevation is position.y, and if it's = 0 and you're touching floortiles, that means you're on the ground
-	# vel_y is kind of like velocity.y, but its not a vector
-	# and JUMP_VELOCITY is what you add to velocity to jump
-	# and gravity. the thing that pulls you to the ground and makes you not want to get up anymore.
-	
-	# i searched "how to make gravity" on the internet in order to understand this stuff
-	
-	if ground >= 1 and elevation == 0:
-		if Input.is_action_just_pressed("jump"):
-			vel_y = JUMP_VELOCITY
+	if active == true:
+		if Input.is_action_pressed("left"):
+			velocity.x = move_toward(velocity.x, -150, SPEED * delta)
+		elif Input.is_action_pressed("right"):
+			velocity.x = move_toward(velocity.x, 150, SPEED * delta)
 		else:
-			vel_y = 0
-	else:
-		vel_y -= gravity * delta
-	elevation = floor(elevation + vel_y)
-	$sprite.position.y = - elevation
-	print(ground)
-	if elevation <= -500:
-		elevation = 0
-		vel_y = 0
+			velocity.x = move_toward(velocity.x, 0, 1.5 * SPEED * delta)
 		
-	move_and_slide()
-	if ground == 0:
-		$shadow.visible = false
+		if Input.is_action_pressed("up"):
+			velocity.y = move_toward(velocity.y, -150, SPEED * delta)
+		elif Input.is_action_pressed("down"):
+			velocity.y = move_toward(velocity.y, 150, SPEED * delta)
+		else:
+			velocity.y = move_toward(velocity.y, 0, 1.5 * SPEED * delta)
+		
+		#ahhhhhhh how to physics
+		# so like: elevation is position.y, and if it's = 0 and you're touching floortiles, that means you're on the ground
+		# vel_y is kind of like velocity.y, but its not a vector
+		# and JUMP_VELOCITY is what you add to velocity to jump
+		# and gravity. the thing that pulls you to the ground and makes you not want to get up anymore.
+		
+		# i searched "how to make gravity" on the internet in order to understand this stuff
+		
+		if ground >= 1 and elevation == 0:
+			if Input.is_action_just_pressed("jump"):
+				vel_y = JUMP_VELOCITY
+			elif elevation == 0.0 and bounce == true:
+				vel_y = 5.0
+			else:
+				vel_y = 0
+		elif elevation == 0.0 and bounce == true:
+			vel_y = 5.0
+		else:
+			vel_y -= gravity * delta
+		elevation = floor(elevation + vel_y)
+		$sprite.position.y = - elevation
+		if elevation <= -500:
+			elevation = 0
+			vel_y = 0
+		
+
+			
+		move_and_slide()
+		if ground == 0:
+			$shadow.visible = false
+		else:
+			$shadow.visible = true
 	else:
-		$shadow.visible = true
+		if Input.is_action_just_pressed("jump"):
+			active = true
+			vel_y = JUMP_VELOCITY
+			$sprite.play("down")
+			$dot.visible = true
+			$shadow.visible = true
+			DisplayServer.window_set_title(levelname)
 	gl.play_y = position.y
+	print(str(bounce)+str(elevation))
 
 # if you're touching at least one ground tile that means you are standing on the ground!
 func _on_g_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ground"):
 		ground += 1
+	if area.is_in_group("bouncer"):
+		bounce = true
 
 
 func _on_g_area_exited(area: Area2D) -> void:
 	if area.is_in_group("ground"):
 		ground -= 1
+	if area.is_in_group("bouncer"):
+		bounce = false
