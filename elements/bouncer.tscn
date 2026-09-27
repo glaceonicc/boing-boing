@@ -17,6 +17,7 @@ animations = [{
 size = Vector2(18, 16)
 
 [node name="bouncer" type="Area2D" unique_id=385185766 groups=["bouncer"]]
+z_index = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1035274506]
 sprite_frames = SubResource("SpriteFrames_qdc2x")

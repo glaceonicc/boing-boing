@@ -88,10 +88,10 @@ func _physics_process(delta: float) -> void:
 
 			
 		move_and_slide()
-		if ground == 0:
-			$shadow.visible = false
-		else:
+		if ground > 0 or bounce == true or spike > 0 and elevation > 0:
 			$shadow.visible = true
+		else:
+			$shadow.visible = false
 	else:
 		if Input.is_action_just_pressed("jump"):
 			active = true
@@ -136,5 +136,6 @@ func _on_death_area_exited(area: Area2D) -> void:
 
 func die():
 	gl.emit_signal("die")
+	gl.hearts -= 1
 	position.x = checkpoint_x
 	position.y = checkpoint_y

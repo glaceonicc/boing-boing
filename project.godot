@@ -37,6 +37,7 @@ ground="ground tiles that you can walk on"
 bouncer="for the bouncer flower that bounces you up like a trampoline!"
 wallground="you can stand on walls now"
 spike="kills you if elevation == 0 and you land on it"
+collect="used for collecting coins and stuff"
 
 [input]
 

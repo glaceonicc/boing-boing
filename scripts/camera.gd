@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	
 	$timer/time.text = str(gl.time)
 	$lives/amount.text = "x" + str(gl.lives)
+	$points/amount.text = str(gl.points)
 	if gl.star1 == true:
 		$"stars/1".play("yes")
 	else:
@@ -25,9 +26,30 @@ func _process(delta: float) -> void:
 		$"stars/3".play("yes")
 	else:
 		$"stars/3".play("no")
+	hearts()
 
 func reset():
 	if gl.checkpointnew == true:
 		position.y = (gl.play_y - 10)
 	else: 
 		position.y = 0
+
+func hearts():
+	var _3 = $"hearts/1"
+	var _2 = $"hearts/2"
+	var _1 = $"hearts/3"
+	
+	if gl.hearts == 3:
+		_1.play("yes")
+	else:
+		_1.play("no")
+	
+	if gl.hearts >= 2:
+		_2.play("yes")
+	else:
+		_2.play("no")
+	
+	if gl.hearts >= 1:
+		_3.play("yes")
+	else:
+		_3.play("no")

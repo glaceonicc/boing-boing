@@ -76,7 +76,7 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_57qmd")
 debug_color = Color(0.99798304, 0.70814145, 0.469137, 0.41960785)
 
-[node name="death" type="Area2D" parent="." unique_id=1201594494]
+[node name="death" type="Area2D" parent="." unique_id=1201594494 groups=["collect"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="death" unique_id=1854481691]
 position = Vector2(0, 2.5)
