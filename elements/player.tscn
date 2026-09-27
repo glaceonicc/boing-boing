@@ -74,5 +74,8 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0, 0, 0, 0.41960785)
 
+[node name="timer" type="Timer" parent="." unique_id=547788070]
+
 [connection signal="area_entered" from="g" to="." method="_on_g_area_entered"]
 [connection signal="area_exited" from="g" to="." method="_on_g_area_exited"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

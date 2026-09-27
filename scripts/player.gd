@@ -18,13 +18,17 @@ var active = false # if you started playing (press space to start)
 @export var startpos_x = 0
 @export var startpos_y = 64
 
+@export var time = 500
+
 @export var levelname: String
 
 func _ready() -> void:
 	position.x = startpos_x
 	position.y = startpos_y
+	gl.time = time
 	$sprite.play("sprout")
 	DisplayServer.window_set_title("PRESS SPACE TO START")
+	
 
 func _physics_process(delta: float) -> void:
 	if active == true:
@@ -82,6 +86,7 @@ func _physics_process(delta: float) -> void:
 			$dot.visible = true
 			$shadow.visible = true
 			DisplayServer.window_set_title(levelname)
+			$timer.start()
 	gl.play_y = position.y
 	print(str(bounce)+str(elevation))
 
@@ -98,3 +103,7 @@ func _on_g_area_exited(area: Area2D) -> void:
 		ground -= 1
 	if area.is_in_group("bouncer"):
 		bounce = false
+
+
+func _on_timer_timeout() -> void:
+	gl.time -= 1

@@ -1,6 +1,145 @@
 [gd_scene format=3 uid="uid://ke0k32p0w70l"]
 
 [ext_resource type="Script" uid="uid://c6oc117t6lkt3" path="res://scripts/camera.gd" id="1_l6h3d"]
+[ext_resource type="Texture2D" uid="uid://dvc67rmna63rb" path="res://textures/heart.png" id="2_4ty4n"]
+[ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/life.png" id="3_od2jc"]
+[ext_resource type="Texture2D" uid="uid://u4gi02txo8tc" path="res://textures/star.png" id="4_od2jc"]
+[ext_resource type="Texture2D" uid="uid://cikch58nwf4yq" path="res://textures/nostar.png" id="4_y0flh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4ty4n")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_57qmd"]
+font_size = 8
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_od2jc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_yf5fn"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_d0u6y"]
+font_size = 8
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y0flh")
+}],
+"loop": 1,
+"name": &"no",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_od2jc")
+}],
+"loop": 1,
+"name": &"yes",
+"speed": 5.0
+}]
 
 [node name="Camera" type="Camera2D" unique_id=1866184742]
+z_index = 4
 script = ExtResource("1_l6h3d")
+
+[node name="hearts" type="Node2D" parent="." unique_id=1744789809]
+position = Vector2(47, -81)
+
+[node name="1" type="AnimatedSprite2D" parent="hearts" unique_id=674165543]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="2" type="AnimatedSprite2D" parent="hearts" unique_id=1666097724]
+position = Vector2(24, 8)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="3" type="AnimatedSprite2D" parent="hearts" unique_id=1527396121]
+position = Vector2(40, 8)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="lives" type="Node2D" parent="." unique_id=407350310]
+position = Vector2(108, -81)
+
+[node name="amount" type="Label" parent="lives" unique_id=129375845]
+offset_left = 18.0
+offset_top = 2.0
+offset_right = 31.0
+offset_bottom = 15.0
+text = "x 5"
+label_settings = SubResource("LabelSettings_57qmd")
+
+[node name="symbol" type="AnimatedSprite2D" parent="lives" unique_id=1008478001]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+
+[node name="levelinfo" type="Node2D" parent="." unique_id=1562691934]
+position = Vector2(-144, -81)
+
+[node name="name" type="Label" parent="levelinfo" unique_id=1655335395]
+offset_top = 2.0
+offset_right = 62.0
+offset_bottom = 14.0
+text = "❀ 0-0: test area!"
+label_settings = SubResource("LabelSettings_g4v7s")
+
+[node name="timer" type="Node2D" parent="." unique_id=1346686340]
+position = Vector2(-65, -81)
+
+[node name="time" type="Label" parent="timer" unique_id=436800417]
+offset_top = 2.0
+offset_right = 14.0
+offset_bottom = 14.0
+text = "000"
+label_settings = SubResource("LabelSettings_yf5fn")
+metadata/_edit_use_anchors_ = true
+
+[node name="points" type="Node2D" parent="." unique_id=2109889769]
+position = Vector2(13, -80)
+
+[node name="amount" type="Label" parent="points" unique_id=133190275]
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 28.0
+offset_bottom = 13.0
+text = "000000"
+label_settings = SubResource("LabelSettings_d0u6y")
+metadata/_edit_use_anchors_ = true
+
+[node name="stars" type="Node2D" parent="." unique_id=1423359077]
+position = Vector2(-40, -82)
+
+[node name="1" type="AnimatedSprite2D" parent="stars" unique_id=1640000410]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"no"
+
+[node name="2" type="AnimatedSprite2D" parent="stars" unique_id=1359436629]
+position = Vector2(24, 8)
+sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"no"
+
+[node name="3" type="AnimatedSprite2D" parent="stars" unique_id=1090963425]
+position = Vector2(40, 8)
+sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"no"
