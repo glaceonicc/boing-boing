@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvc67rmna63rb"
-path="res://.godot/imported/heart.png-5d457948ef7563ccb0bc4ed32cbddea7.ctex"
+uid="uid://br1e3gvqr386n"
+path="res://.godot/imported/thewalking1.png-400059464e6fe1f37f65659e51f194a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/heart.png"
-dest_files=["res://.godot/imported/heart.png-5d457948ef7563ccb0bc4ed32cbddea7.ctex"]
+source_file="res://textures/enemies/thewalking1.png"
+dest_files=["res://.godot/imported/thewalking1.png-400059464e6fe1f37f65659e51f194a8.ctex"]
 
 [params]
 

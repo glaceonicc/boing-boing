@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b4kp0aw6wvynk"]
 
-[ext_resource type="Texture2D" uid="uid://b27aljjulv88k" path="res://textures/bouncer.png" id="1_fovne"]
+[ext_resource type="Texture2D" uid="uid://b27aljjulv88k" path="res://textures/elements/bouncer.png" id="1_fovne"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qdc2x"]
 animations = [{

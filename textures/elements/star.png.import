@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b27aljjulv88k"
-path="res://.godot/imported/bouncer.png-b5354d4e421beadba50a1709a7b2efec.ctex"
+uid="uid://u4gi02txo8tc"
+path="res://.godot/imported/star.png-80e857bbac372e91d8e5cfd1565b2f59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bouncer.png"
-dest_files=["res://.godot/imported/bouncer.png-b5354d4e421beadba50a1709a7b2efec.ctex"]
+source_file="res://textures/elements/star.png"
+dest_files=["res://.godot/imported/star.png-80e857bbac372e91d8e5cfd1565b2f59.ctex"]
 
 [params]
 

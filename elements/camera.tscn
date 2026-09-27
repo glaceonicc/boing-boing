@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://ke0k32p0w70l"]
 
 [ext_resource type="Script" uid="uid://c6oc117t6lkt3" path="res://scripts/camera.gd" id="1_l6h3d"]
-[ext_resource type="Texture2D" uid="uid://dvc67rmna63rb" path="res://textures/heart.png" id="2_4ty4n"]
-[ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/life.png" id="3_od2jc"]
-[ext_resource type="Texture2D" uid="uid://u4gi02txo8tc" path="res://textures/star.png" id="4_od2jc"]
-[ext_resource type="Texture2D" uid="uid://cikch58nwf4yq" path="res://textures/nostar.png" id="4_y0flh"]
+[ext_resource type="Texture2D" uid="uid://dvc67rmna63rb" path="res://textures/elements/heart.png" id="2_4ty4n"]
+[ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/elements/life.png" id="3_od2jc"]
+[ext_resource type="Texture2D" uid="uid://u4gi02txo8tc" path="res://textures/elements/star.png" id="4_od2jc"]
+[ext_resource type="Texture2D" uid="uid://cikch58nwf4yq" path="res://textures/elements/nostar.png" id="4_y0flh"]
+[ext_resource type="PackedScene" uid="uid://cmuhtq4x883yq" path="res://elements/border.tscn" id="6_22h6e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -143,3 +144,17 @@ animation = &"no"
 position = Vector2(40, 8)
 sprite_frames = SubResource("SpriteFrames_57qmd")
 animation = &"no"
+
+[node name="borders" type="Node2D" parent="." unique_id=333033497]
+
+[node name="border" parent="borders" unique_id=1601910037 instance=ExtResource("6_22h6e")]
+position = Vector2(0, 89)
+scale = Vector2(17.885, 1)
+collision_layer = 4
+collision_mask = 4
+
+[node name="border2" parent="borders" unique_id=581089424 instance=ExtResource("6_22h6e")]
+position = Vector2(0, -89)
+scale = Vector2(17.885, 1)
+collision_layer = 4
+collision_mask = 4

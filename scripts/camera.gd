@@ -8,8 +8,9 @@ func _ready() -> void:
  # FIX OMG
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if position.y > gl.play_y + 10:
+	if position.y > gl.play_y + 10 and position.y > gl.max_y:
 		position.y =  move_toward(position.y, gl.play_y - 10, 110*delta)
+	
 	$timer/time.text = str(gl.time)
 	$lives/amount.text = "x" + str(gl.lives)
 	if gl.star1 == true:

@@ -6,6 +6,7 @@ extends Node
 var play_x
 var play_y
 var time
+var max_y
 var hearts = 3
 var lives = 5
 var stars = 0

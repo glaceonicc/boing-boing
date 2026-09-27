@@ -17,7 +17,7 @@ var active = false # if you started playing (press space to start)
 
 @export var startpos_x = 0
 @export var startpos_y = 64
-
+@export var max_y = -10000
 @export var time = 500
 
 @export var levelname: String
@@ -26,6 +26,7 @@ func _ready() -> void:
 	position.x = startpos_x
 	position.y = startpos_y
 	gl.time = time
+	gl.max_y = max_y
 	$sprite.play("sprout")
 	DisplayServer.window_set_title("PRESS SPACE TO START")
 	

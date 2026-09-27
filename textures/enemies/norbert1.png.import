@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr5qwe3p6tecv"
-path="res://.godot/imported/life.png-4f43677280b80efecf42e923d5424a0e.ctex"
+uid="uid://bj2s7tgxqerhh"
+path="res://.godot/imported/norbert1.png-028b1950e316a35f2084a59d99109e29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/life.png"
-dest_files=["res://.godot/imported/life.png-4f43677280b80efecf42e923d5424a0e.ctex"]
+source_file="res://textures/enemies/norbert1.png"
+dest_files=["res://.godot/imported/norbert1.png-028b1950e316a35f2084a59d99109e29.ctex"]
 
 [params]
 
