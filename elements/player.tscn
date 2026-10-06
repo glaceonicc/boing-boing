@@ -49,15 +49,18 @@ script = ExtResource("1_sf2tj")
 
 [node name="dot" type="Sprite2D" parent="." unique_id=1191148222]
 visible = false
+z_index = 5
 position = Vector2(0, 4)
 texture = ExtResource("2_b6vef")
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=1936731310]
 visible = false
+z_index = 5
 position = Vector2(0, 4)
 texture = ExtResource("2_veuqq")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1506881017]
+z_index = 6
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"sprout"
 

@@ -1,16 +1,13 @@
 extends Area2D
 
 @export var type: int
+var inside = false
 
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	pass
-
-
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("collect"):
+	if gl.play_elevation < 15 and inside == true and gl.play_elevation > -1:
 		if type == 1:
 			gl.points += 100
 		if type == 2:
@@ -32,3 +29,13 @@ func _on_area_entered(area: Area2D) -> void:
 			gl.star3 = true
 			gl.points += 1000
 		queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("collect"):
+		inside = true
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group("collect"):
+		inside = false

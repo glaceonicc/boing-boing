@@ -2,12 +2,16 @@ extends Node
 
 # GLOBAL VARIABLES!!! C:
 
-
+#player dynamic stuff
 var play_x
 var play_y
+var play_pos
 var play_elevation
 var checkpointnew
+
+# level settings
 var max_y
+var BPM
 
 var time
 var hearts = 3

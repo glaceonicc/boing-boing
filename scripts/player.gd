@@ -103,6 +103,7 @@ func _physics_process(delta: float) -> void:
 			$timer.start()
 	gl.play_x = position.x
 	gl.play_y = position.y
+	gl.play_pos = position
 	gl.play_elevation = elevation
 	print(str(elevation))
 
@@ -135,7 +136,7 @@ func _on_death_area_exited(area: Area2D) -> void:
 		spike -= 1
 
 func die():
-	gl.emit_signal("die")
 	gl.hearts -= 1
 	position.x = checkpoint_x
 	position.y = checkpoint_y
+	gl.emit_signal("die")

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dwejv5jsvp0h2"]
+
+[ext_resource type="Script" uid="uid://0so3j14nn6ld" path="res://scripts/blinking_floor.gd" id="1_7sben"]
+[ext_resource type="Texture2D" uid="uid://beei1mnlgrehq" path="res://textures/elements/blinkblockblue.png" id="2_htyb1"]
+[ext_resource type="Texture2D" uid="uid://bj2fean0o4jt2" path="res://textures/elements/blinkblockred.png" id="3_4ixcq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0rsw"]
+atlas = ExtResource("2_htyb1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h55r"]
+atlas = ExtResource("2_htyb1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sispa"]
+atlas = ExtResource("3_4ixcq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1kyv"]
+atlas = ExtResource("3_4ixcq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0rsw")
+}],
+"loop": 1,
+"name": &"bluefalse",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h55r")
+}],
+"loop": 1,
+"name": &"bluetrue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sispa")
+}],
+"loop": 1,
+"name": &"redfalse",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1kyv")
+}],
+"loop": 1,
+"name": &"redtrue",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 16)
+
+[node name="blinkblock" type="Area2D" unique_id=1294998557 groups=["ground"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_7sben")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=2144747931]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"redtrue"
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=678464128]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="timer" type="Timer" parent="." unique_id=319925091]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
