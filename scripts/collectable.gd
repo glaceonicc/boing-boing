@@ -28,6 +28,8 @@ func _process(delta: float) -> void:
 		if type == 6:
 			gl.star3 = true
 			gl.points += 1000
+		if type == 7:
+			gl.time += 10
 		queue_free()
 
 

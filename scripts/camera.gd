@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 
 func reset():
 	if gl.checkpointnew == true:
-		position.y = (gl.play_y - 10)
+		position.y = (gl.checkpointxy.y - 10)
 	else: 
 		position.y = 0
 

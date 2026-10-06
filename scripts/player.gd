@@ -147,8 +147,11 @@ func _on_death_area_exited(area: Area2D) -> void:
 
 func die():
 	gl.hearts -= 1
-	position.x = checkpoint_x
-	position.y = checkpoint_y
+	if gl.checkpointnew == false:
+		position.x = checkpoint_x
+		position.y = checkpoint_y
+	else:
+		position = gl.checkpointxy
 	gl.emit_signal("die")
 
 func blockflicker():

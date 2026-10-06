@@ -8,6 +8,7 @@ var play_y
 var play_pos
 var play_elevation
 var checkpointnew
+var checkpointxy
 
 
 #level dynamic stuff
