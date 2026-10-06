@@ -1,9 +1,7 @@
 extends Node2D
 
-@export var BPM = 200
-
 func _ready() -> void:
-	gl.BPM = BPM
+	pass
 
 func _process(delta: float) -> void:
 	pass

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://d0e3tjptponl0"]
+
+[ext_resource type="Script" uid="uid://bwblywoiv2jek" path="res://scripts/cycle_spike.gd" id="1_jdacg"]
+[ext_resource type="Texture2D" uid="uid://j4fto6oop23a" path="res://textures/elements/cyclespikes.png" id="2_jdacg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvf5y"]
+atlas = ExtResource("2_jdacg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt6dc"]
+atlas = ExtResource("2_jdacg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27rev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvf5y")
+}],
+"loop": 1,
+"name": &"false",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt6dc")
+}],
+"loop": 1,
+"name": &"true",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(14, 14)
+
+[node name="spike" type="Area2D" unique_id=143202304 groups=["spike"]]
+script = ExtResource("1_jdacg")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=267850092]
+sprite_frames = SubResource("SpriteFrames_27rev")
+animation = &"true"
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=1865350960]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.99861974, 0, 0.14905396, 0.41960785)

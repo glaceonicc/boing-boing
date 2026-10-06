@@ -13,6 +13,8 @@ var ground: int # how many ground tiles are you on
 var gravity = 10 #heheha i made gravity im newton
 var bounce = false # checks if you're in a bouncer
 var spike: int # how many spike tiles are you on
+var flicker = true
+var cycle = 1
 
 var checkpoint_x
 var checkpoint_y
@@ -23,6 +25,7 @@ var active = false # if you started playing (press space to start)
 @export var startpos_y = 64
 @export var max_y = -10000
 @export var time = 500
+@export var BPM = 200
 
 @export var levelname: String
 
@@ -34,6 +37,11 @@ func _ready() -> void:
 	gl.checkpointnew = false
 	gl.time = time
 	gl.max_y = max_y
+	gl.BPM = BPM
+	
+	blockflicker()
+	spikecycle()
+	
 	$sprite.play("sprout")
 	DisplayServer.window_set_title("PRESS SPACE TO START")
 	
@@ -105,6 +113,8 @@ func _physics_process(delta: float) -> void:
 	gl.play_y = position.y
 	gl.play_pos = position
 	gl.play_elevation = elevation
+	gl.colorflicker = flicker
+	gl.spikecycle = cycle
 	print(str(elevation))
 
 # if you're touching at least one ground tile that means you are standing on the ground!
@@ -140,3 +150,27 @@ func die():
 	position.x = checkpoint_x
 	position.y = checkpoint_y
 	gl.emit_signal("die")
+
+func blockflicker():
+	var t = float(BPM) / 4
+	t = 60 / float(t)
+	$flickertimer.wait_time = t
+	$flickertimer.start()
+
+func spikecycle():
+	var s = float(BPM) / 5
+	s = 30 / float(s)
+	$spiketimer.wait_time = s
+	$spiketimer.start()
+
+func _on_flickertimer_timeout() -> void:
+	if flicker == true:
+		flicker = false
+	else:
+		flicker = true
+
+func _on_spiketimer_timeout() -> void:
+	if cycle < 5:
+		cycle += 1
+	else:
+		cycle = 1

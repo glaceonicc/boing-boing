@@ -9,18 +9,23 @@ var play_pos
 var play_elevation
 var checkpointnew
 
-# level settings
-var max_y
-var BPM
 
+#level dynamic stuff
 var time
 var hearts = 3
-var lives = 5
 var star1
 var star2
 var star3
 var points = 0
+var colorflicker
+var spikecycle
 
+# level settings
+var max_y
+var BPM
+
+# game dynamic stuff
+var lives = 5
 var goldenflowers = 0
 var stars = 0
 
