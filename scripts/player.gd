@@ -39,6 +39,9 @@ func _ready() -> void:
 	gl.max_y = max_y
 	gl.BPM = BPM
 	
+	gl.connect("kill", die)
+	gl.connect("boing", boing)
+	
 	blockflicker()
 	spikecycle()
 	
@@ -77,6 +80,10 @@ func _physics_process(delta: float) -> void:
 				vel_y = 5.0
 			else:
 				vel_y = 0
+				elevation = 0
+		elif ground >= 1 and elevation <= 0 and elevation > -4:
+			vel_y = 0
+			elevation = 0
 		elif elevation == 0.0 and bounce == true:
 			vel_y = 5.0
 		else:
@@ -177,3 +184,6 @@ func _on_spiketimer_timeout() -> void:
 		cycle += 1
 	else:
 		cycle = 1
+
+func boing(): #the bounce you get when killing an enemy
+	vel_y = 2.5

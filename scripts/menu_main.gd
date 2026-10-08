@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 	pass
 
 func play():
-	get_tree().change_scene_to_file("res://areas/area_test.tscn")
+	get_tree().change_scene_to_file("res://levels/0-0.tscn")

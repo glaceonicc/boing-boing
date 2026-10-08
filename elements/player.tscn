@@ -62,7 +62,7 @@ texture = ExtResource("2_veuqq")
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1506881017]
 z_index = 6
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"sprout"
+animation = &"down"
 
 [node name="g" type="Area2D" parent="." unique_id=1096287759]
 collision_layer = 3

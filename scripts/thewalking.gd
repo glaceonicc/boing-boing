@@ -5,6 +5,7 @@ var base
 var go_vector
 var ground = 0
 var reseting = false
+var inside = false
 
 func _ready() -> void:
 	$sprite.play("default")
@@ -25,6 +26,12 @@ func _process(delta: float) -> void:
 	else:
 		linear_velocity.x = move_toward(linear_velocity.x, 0, 60)
 		linear_velocity.y = move_toward(linear_velocity.y, 0, 60)
+	if inside == true:
+		if gl.play_elevation > 5 and gl.play_elevation < 12:
+			gl.emit_signal("boing")
+			queue_free()
+		elif gl.play_elevation < 5:
+			gl.emit_signal("kill")
 
 func _on_sight_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collect"):
@@ -45,7 +52,11 @@ func reset():
 func _on_kill_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ground"):
 		ground += 1
+	if area.is_in_group("collect"):
+		inside = true
 
 func _on_kill_area_exited(area: Area2D) -> void:
 	if area.is_in_group("ground"):
 		ground -= 1
+	if area.is_in_group("collect"):
+		inside = false

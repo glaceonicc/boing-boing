@@ -33,6 +33,8 @@ var stars = 0
 
 
 signal die
+signal kill
+signal boing
 
 
 func _ready() -> void:
