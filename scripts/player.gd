@@ -122,7 +122,8 @@ func _physics_process(delta: float) -> void:
 	gl.play_elevation = elevation
 	gl.colorflicker = flicker
 	gl.spikecycle = cycle
-	print(str(elevation))
+	gl.active = active
+	#print(str(elevation))
 
 # if you're touching at least one ground tile that means you are standing on the ground!
 func _on_g_area_entered(area: Area2D) -> void:
@@ -146,6 +147,8 @@ func _on_timer_timeout() -> void:
 func _on_death_area_entered(area: Area2D) -> void:
 	if area.is_in_group("spike"):
 		spike += 1
+	if area.is_in_group("kill"):
+		die()
 
 
 func _on_death_area_exited(area: Area2D) -> void:

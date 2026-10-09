@@ -76,5 +76,5 @@ position = Vector2(45, 48)
 [node name="thewalking7" parent="." unique_id=1101010696 instance=ExtResource("14_r0hsk")]
 position = Vector2(-70, -64)
 
-[node name="thewalking8" parent="." unique_id=2077139296 instance=ExtResource("14_r0hsk")]
+[node name="thewalking8" parent="." unique_id=2077139296 groups=["kill"] instance=ExtResource("14_r0hsk")]
 position = Vector2(73, -66)

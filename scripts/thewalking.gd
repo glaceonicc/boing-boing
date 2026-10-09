@@ -6,6 +6,7 @@ var go_vector
 var ground = 0
 var reseting = false
 var inside = false
+var toreset = false # makes it not deal damage twice
 
 func _ready() -> void:
 	$sprite.play("default")
@@ -13,7 +14,7 @@ func _ready() -> void:
 	base = position
 
 func _process(delta: float) -> void:
-	if sight == true and ground >= 1:
+	if sight == true and ground >= 1 and gl.active == true:
 		# thank you godot forum for this solution
 		go_vector = gl.play_pos - position
 		linear_velocity = go_vector.normalized() * 2000 * delta
@@ -30,8 +31,9 @@ func _process(delta: float) -> void:
 		if gl.play_elevation > 5 and gl.play_elevation < 12:
 			gl.emit_signal("boing")
 			queue_free()
-		elif gl.play_elevation < 5:
+		elif gl.play_elevation < 5 and toreset == false:
 			gl.emit_signal("kill")
+			toreset = true
 
 func _on_sight_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collect"):
@@ -48,6 +50,7 @@ func reset():
 	linear_velocity.y = 0
 	position = base
 	reseting = false
+	toreset = false
 
 func _on_kill_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ground"):

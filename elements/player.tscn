@@ -64,29 +64,29 @@ z_index = 6
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"down"
 
-[node name="g" type="Area2D" parent="." unique_id=1096287759]
+[node name="g" type="Area2D" parent="." unique_id=1096287759 groups=["g"]]
 collision_layer = 3
 collision_mask = 3
 
-[node name="groundcollision" type="CollisionShape2D" parent="g" unique_id=1812347329]
+[node name="hitbox" type="CollisionShape2D" parent="g" unique_id=1812347329 groups=["g"]]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_veuqq")
 
 [node name="destroy" type="Area2D" parent="." unique_id=407586190]
 
-[node name="destroycollision" type="CollisionShape2D" parent="destroy" unique_id=1862094084]
+[node name="hitbox" type="CollisionShape2D" parent="destroy" unique_id=1862094084]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_57qmd")
 debug_color = Color(0.99798304, 0.70814145, 0.469137, 0.41960785)
 
 [node name="death" type="Area2D" parent="." unique_id=1201594494 groups=["collect"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="death" unique_id=1854481691]
+[node name="hitbox" type="CollisionShape2D" parent="death" unique_id=1854481691]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0.87422675, 0.32795528, 0.2999541, 0.41960785)
 
-[node name="wallcollision" type="CollisionShape2D" parent="." unique_id=26981508]
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=26981508]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0, 0, 0, 0.41960785)

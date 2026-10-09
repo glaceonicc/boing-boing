@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dsh4j6t32julc"]
+
+[ext_resource type="Script" uid="uid://d3m2srwv7nw3w" path="res://scripts/crumbleblock.gd" id="1_qlww0"]
+[ext_resource type="Texture2D" uid="uid://6idrya736q0k" path="res://textures/elements/crumbleblock.png" id="2_qlww0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtjyf"]
+atlas = ExtResource("2_qlww0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppf2b"]
+atlas = ExtResource("2_qlww0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shpl7"]
+atlas = ExtResource("2_qlww0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtjyf")
+}],
+"loop": 1,
+"name": &"crack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppf2b")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shpl7")
+}],
+"loop": 1,
+"name": &"ows",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(16, 16)
+
+[node name="floorblock" type="Area2D" unique_id=1294998557 groups=["ground"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_qlww0")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=203286890]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=678464128]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="timer" type="Timer" parent="." unique_id=630815814]
+one_shot = true
+
+[node name="detect" type="Area2D" parent="." unique_id=1477630517]
+
+[node name="hitbox" type="CollisionShape2D" parent="detect" unique_id=1789328145]
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="back" type="Timer" parent="." unique_id=1055092253]
+one_shot = true
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="detect" to="." method="_on_detect_area_entered"]
+[connection signal="area_exited" from="detect" to="." method="_on_detect_area_exited"]
+[connection signal="timeout" from="back" to="." method="_on_back_timeout"]

@@ -39,6 +39,8 @@ wallground="you can stand on walls now"
 spike="kills you if elevation == 0 and you land on it"
 collect="used for collecting coins and stuff"
 defeat="defeats enemies"
+kill="kills you. no matter what."
+g="player's ground hitbox"
 
 [input]
 
