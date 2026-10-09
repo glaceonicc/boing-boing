@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bkcx8cah1clx4"]
+
+[ext_resource type="Script" uid="uid://c50t8vxhk52vp" path="res://scripts/leaf.gd" id="1_yhu1m"]
+[ext_resource type="Texture2D" uid="uid://bqw73hjyf08bg" path="res://textures/enemies/leaf1.png" id="2_yhu1m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 54.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yhu1m")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(10.5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(12, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(20, 24)
+
+[node name="leaf" type="RigidBody2D" unique_id=1394963580]
+z_index = 4
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_yhu1m")
+
+[node name="sight" type="Area2D" parent="." unique_id=974728487]
+
+[node name="area" type="CollisionShape2D" parent="sight" unique_id=158543438]
+shape = SubResource("CircleShape2D_g4v7s")
+debug_color = Color(0.83263934, 0.91502297, 1, 0.078431375)
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
+z_index = 4
+sprite_frames = SubResource("SpriteFrames_57qmd")
+
+[node name="die" type="Area2D" parent="." unique_id=805278153]
+
+[node name="hitbox" type="CollisionShape2D" parent="die" unique_id=1334702076]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+debug_color = Color(0.8784314, 0.27058825, 0.40784314, 0.24313726)
+
+[node name="kill" type="Area2D" parent="." unique_id=107530660]
+
+[node name="hitbox" type="CollisionShape2D" parent="kill" unique_id=1028904047]
+shape = SubResource("RectangleShape2D_57qmd")
+debug_color = Color(0.77269053, 0.15136263, 0.99999994, 0.41960785)
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=262030626]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="wtf" type="Area2D" parent="." unique_id=2001866224]
+
+[node name="hitbox" type="CollisionShape2D" parent="wtf" unique_id=876963761]
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[connection signal="area_entered" from="sight" to="." method="_on_sight_area_entered"]
+[connection signal="area_exited" from="sight" to="." method="_on_sight_area_exited"]
+[connection signal="area_entered" from="kill" to="." method="_on_kill_area_entered"]
+[connection signal="area_exited" from="kill" to="." method="_on_kill_area_exited"]

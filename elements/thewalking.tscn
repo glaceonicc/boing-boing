@@ -26,6 +26,9 @@ size = Vector2(10.5, 12.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(12, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(20, 24)
+
 [node name="thewalking" type="RigidBody2D" unique_id=1394963580]
 z_index = 4
 collision_layer = 2
@@ -62,6 +65,11 @@ debug_color = Color(0.77269053, 0.15136263, 0.99999994, 0.41960785)
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="wtf" type="Area2D" parent="." unique_id=2001866224]
+
+[node name="hitbox" type="CollisionShape2D" parent="wtf" unique_id=876963761]
+shape = SubResource("RectangleShape2D_d0u6y")
 
 [connection signal="area_entered" from="sight" to="." method="_on_sight_area_entered"]
 [connection signal="area_exited" from="sight" to="." method="_on_sight_area_exited"]

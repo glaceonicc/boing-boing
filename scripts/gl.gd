@@ -25,6 +25,7 @@ var spikecycle
 # level settings
 var max_y
 var BPM
+var lvlname
 
 # game dynamic stuff
 var lives = 5

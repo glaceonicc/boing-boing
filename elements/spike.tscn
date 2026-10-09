@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dwegfxddm53ah" path="res://textures/elements/spikes.png" id="1_xpaug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(14, 14)
+size = Vector2(12, 12)
 
 [node name="spike" type="Area2D" unique_id=143202304 groups=["spike"]]
 

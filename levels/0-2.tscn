@@ -53,7 +53,7 @@ tile_set = SubResource("TileSet_yf5fn")
 [node name="player" parent="." unique_id=1095499475 instance=ExtResource("13_1nhwc")]
 position = Vector2(0, 64)
 max_y = 0
-levelname = "❀ 0-0: test area!   ♫ ~ none     "
+levelname = "❀ 0-2 walkingtest   ♫ ~ none     "
 
 [node name="thewalking" parent="." unique_id=1394963580 instance=ExtResource("14_r0hsk")]
 position = Vector2(0, -567)

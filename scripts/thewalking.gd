@@ -8,6 +8,10 @@ var reseting = false
 var inside = false
 var toreset = false # makes it not deal damage twice
 
+var vel_y = 0
+var gravity = 10
+var elevation = 0
+
 func _ready() -> void:
 	$sprite.play("default")
 	gl.connect("die", reset)
@@ -17,23 +21,30 @@ func _process(delta: float) -> void:
 	if sight == true and ground >= 1 and gl.active == true:
 		# thank you godot forum for this solution
 		go_vector = gl.play_pos - position
-		linear_velocity = go_vector.normalized() * 2000 * delta
+		linear_velocity = go_vector.normalized() * 1000 * delta
 		# my previous script that went through walls for some reason
-		#position = position.move_toward(Vector2(gl.play_pos), delta * 40)
 	elif ground >= 1:
 		# i still dont know how to set it to zero in one line of code ;-;
 		linear_velocity.x = move_toward(linear_velocity.x, 0, 1)
 		linear_velocity.y = move_toward(linear_velocity.y, 0, 1)
 	else:
-		linear_velocity.x = move_toward(linear_velocity.x, 0, 60)
-		linear_velocity.y = move_toward(linear_velocity.y, 0, 60)
+		vel_y -= gravity * delta
+		
 	if inside == true:
 		if gl.play_elevation > 5 and gl.play_elevation < 12:
 			gl.emit_signal("boing")
+			gl.points+= 100
 			queue_free()
-		elif gl.play_elevation < 5 and toreset == false:
+		elif 0 <= gl.play_elevation < 5 and toreset == false:
 			gl.emit_signal("kill")
 			toreset = true
+			
+	elevation = floor(elevation + vel_y)
+	$sprite.position.y = - elevation
+	if elevation < -500:
+		gl.points +=100
+		queue_free()
+
 
 func _on_sight_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collect"):

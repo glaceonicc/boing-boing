@@ -123,6 +123,7 @@ func _physics_process(delta: float) -> void:
 	gl.colorflicker = flicker
 	gl.spikecycle = cycle
 	gl.active = active
+	gl.lvlname = levelname #wtf
 	#print(str(elevation))
 
 # if you're touching at least one ground tile that means you are standing on the ground!

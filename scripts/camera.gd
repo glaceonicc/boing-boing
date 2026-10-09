@@ -4,7 +4,6 @@ extends Camera2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	gl.connect("die", reset)
-
  # FIX OMG
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -27,6 +26,7 @@ func _process(delta: float) -> void:
 	else:
 		$"stars/3".play("no")
 	hearts()
+	$levelinfo/name.text = gl.lvlname
 
 func reset():
 	if gl.checkpointnew == true:

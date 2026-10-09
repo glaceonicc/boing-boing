@@ -31,7 +31,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(14, 14)
+size = Vector2(12, 12)
 
 [node name="spike" type="Area2D" unique_id=143202304 groups=["spike"]]
 script = ExtResource("1_jdacg")
