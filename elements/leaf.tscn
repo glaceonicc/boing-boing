@@ -54,7 +54,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0.8784314, 0.27058825, 0.40784314, 0.24313726)
 
-[node name="kill" type="Area2D" parent="." unique_id=107530660]
+[node name="kill" type="Area2D" parent="." unique_id=107530660 groups=["spike"]]
 
 [node name="hitbox" type="CollisionShape2D" parent="kill" unique_id=1028904047]
 shape = SubResource("RectangleShape2D_57qmd")

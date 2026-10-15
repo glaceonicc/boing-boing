@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			gl.emit_signal("boing")
 			gl.points+= 100
 			queue_free()
-		elif 0 <= gl.play_elevation < 5 and toreset == false:
+		elif 0 <= gl.play_elevation and toreset == false and gl.play_elevation < 5:
 			gl.emit_signal("kill")
 			toreset = true
 			
