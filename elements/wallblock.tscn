@@ -12,14 +12,14 @@ size = Vector2(16, 16)
 collision_layer = 3
 collision_mask = 3
 
-[node name="sprite" type="Sprite2D" parent="." unique_id=343307427]
-texture = ExtResource("1_yre3y")
-
 [node name="ground" type="Area2D" parent="." unique_id=1541286817 groups=["wallground"]]
 
 [node name="hitbox" type="CollisionShape2D" parent="ground" unique_id=1446832799]
 shape = SubResource("RectangleShape2D_yf5fn")
 
+[node name="sprite" type="Sprite2D" parent="." unique_id=343307427]
+texture = ExtResource("1_yre3y")
+
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=2139499230]
 shape = SubResource("RectangleShape2D_g4v7s")
-debug_color = Color(0, 0.30879307, 0.68974847, 0.41960785)
+debug_color = Color(0, 0.30980393, 0.6901961, 0.41960785)

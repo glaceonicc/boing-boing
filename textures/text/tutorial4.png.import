@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj2s7tgxqerhh"
-path="res://.godot/imported/norbert1.png-028b1950e316a35f2084a59d99109e29.ctex"
+uid="uid://bnb5yij4by37w"
+path="res://.godot/imported/tutorial4.png-19de3e95221ae4498358f1dff164f880.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/enemies/norbert1.png"
-dest_files=["res://.godot/imported/norbert1.png-028b1950e316a35f2084a59d99109e29.ctex"]
+source_file="res://textures/text/tutorial4.png"
+dest_files=["res://.godot/imported/tutorial4.png-19de3e95221ae4498358f1dff164f880.ctex"]
 
 [params]
 
