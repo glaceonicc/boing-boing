@@ -44,7 +44,6 @@ tile_set = SubResource("TileSet_g4v7s")
 
 [node name="elementiles" type="TileMapLayer" parent="." unique_id=791288649]
 z_index = 3
-tile_map_data = PackedByteArray("AAD//+n/AAAAAAAAAQAAAOn/AAAAAAAAAQD//+T/AAAAAAAAAQAAAOT/AAAAAAAAAQA=")
 tile_set = SubResource("TileSet_yf5fn")
 
 [node name="Camera" parent="." unique_id=1866184742 instance=ExtResource("12_kvvph")]
