@@ -113,7 +113,7 @@ position = Vector2(-144, -81)
 offset_top = 2.0
 offset_right = 62.0
 offset_bottom = 14.0
-text = "❀ 0-0: test area!"
+text = "❀ W-L: levelname"
 label_settings = SubResource("LabelSettings_g4v7s")
 
 [node name="timer" type="Node2D" parent="." unique_id=1346686340]

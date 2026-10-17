@@ -7,14 +7,17 @@ extends CharacterBody2D
 
 var SPEED = 800.0 # the thing to multiply the velocity things by
 var JUMP_VELOCITY = 4.0 # like how high you jump i guess??
+
 var elevation = 0 # simulates position.y kinda i think. like position.y is now z and this is the y instead.
 var vel_y = 0# velocity.y. but like. i made it.
 var ground: int # how many ground tiles are you on
 var gravity = 10 #heheha i made gravity im newton
 var bounce = false # checks if you're in a bouncer
 var spike: int # how many spike tiles are you on
-var flicker = true
-var cycle = 1
+var airtime := 0.0
+
+var flicker = true # handles the flickering of blinkblocks
+var cycle = 1 # handles spike cycle
 
 var checkpoint_x
 var checkpoint_y
@@ -73,21 +76,17 @@ func _physics_process(delta: float) -> void:
 		
 		# i searched "how to make gravity" on the internet in order to understand this stuff ;-;
 		
-		if ground >= 1 and elevation == 0:
-			if Input.is_action_just_pressed("jump"):
-				vel_y = JUMP_VELOCITY
-			elif elevation == 0.0 and bounce == true:
-				vel_y = 5.0
-			else:
-				vel_y = 0
-				elevation = 0
-		elif ground >= 1 and elevation <= 0 and elevation > -4:
+		if Input.is_action_just_pressed("jump") and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.1 and ground < 1:
+			vel_y = JUMP_VELOCITY
+		elif elevation <= 0 and elevation > -4 and bounce == true:
+			vel_y = 5.0
+		elif ground >= 1 and elevation <= 0 and elevation > -3:
 			vel_y = 0
 			elevation = 0
-		elif elevation == 0.0 and bounce == true:
-			vel_y = 5.0
+			airtime = 0.0
 		else:
 			vel_y -= gravity * delta
+			airtime += delta
 		
 		if elevation == 0 and spike >= 1:
 			die()
