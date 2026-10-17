@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://5iqbta24ll46" path="res://textures/worldmap/tiles/w0bg.png" id="1_luep3"]
 [ext_resource type="Texture2D" uid="uid://dlawv0id43o32" path="res://textures/worldmap/tiles/w0.png" id="2_1rg5t"]
+[ext_resource type="Texture2D" uid="uid://d3to1uj3epic3" path="res://textures/worldmap/trail.png" id="3_1rg5t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvokv"]
 texture = ExtResource("1_luep3")
@@ -19,6 +20,24 @@ texture = ExtResource("2_1rg5t")
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
 sources/0 = SubResource("TileSetAtlasSource_mbvbo")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0coyo"]
+texture = ExtResource("3_1rg5t")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_57qmd"]
+sources/0 = SubResource("TileSetAtlasSource_0coyo")
+
 [node name="world map  W0 - test area" type="Node2D" unique_id=500603845]
 
 [node name="bg" type="TileMapLayer" parent="." unique_id=469977935]
@@ -28,3 +47,8 @@ tile_set = SubResource("TileSet_yf5fn")
 [node name="world" type="TileMapLayer" parent="." unique_id=2018493575]
 tile_map_data = PackedByteArray("AAAIAAgAAAAAAAEAAAAJAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAMAAAABAAAAAAAJAAMAAAABAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAABAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAMAAYAAAABAAAAAAANAAYAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_g4v7s")
+
+[node name="stuff" type="TileMapLayer" parent="." unique_id=864275576]
+position = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAAIAAYAAAAAAAEAAAAIAAcAAAAAAAEAAAAIAAgAAAABAAAAAAAIAAUAAAAAAAEAAAAIAAQAAAABAAEAAAAJAAQAAAAAAAEAAGAKAAQAAAAAAAEAAGALAAQAAAAAAAEAAGAMAAQAAAABAAEAADAMAAIAAAAAAAEAAAAMAAEAAAAAAAEAAAAMAAMAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_57qmd")
