@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cek42fyk8hyum"]
+
+[ext_resource type="Script" uid="uid://b2nbfscnome1t" path="res://scripts/collectable.gd" id="1_rc1ds"]
+[ext_resource type="Texture2D" uid="uid://u4gi02txo8tc" path="res://textures/elements/star.png" id="2_rc1ds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovrtu"]
+atlas = ExtResource("2_rc1ds")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovrtu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="star1" type="Area2D" unique_id=743439420]
+script = ExtResource("1_rc1ds")
+type = 4
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=646826937]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.10538485, 0.6483274, 0, 0.41960785)
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1219682388]
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

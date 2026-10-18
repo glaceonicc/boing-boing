@@ -58,23 +58,23 @@ levelname = "❀ 0-2 walkingtest   ♫ ~ none     "
 [node name="thewalking" parent="." unique_id=1394963580 instance=ExtResource("14_r0hsk")]
 position = Vector2(0, -567)
 
-[node name="thewalking2" parent="." unique_id=148710266 instance=ExtResource("14_r0hsk")]
-position = Vector2(-88, -7)
-
 [node name="thewalking3" parent="." unique_id=1383434658 instance=ExtResource("14_r0hsk")]
 position = Vector2(1, -43)
 
-[node name="thewalking4" parent="." unique_id=1025304959 instance=ExtResource("14_r0hsk")]
+[node name="thewalking4" parent="." unique_id=448701595 instance=ExtResource("14_r0hsk")]
 position = Vector2(84, 16)
 
-[node name="thewalking5" parent="." unique_id=90292997 instance=ExtResource("14_r0hsk")]
+[node name="thewalking5" parent="." unique_id=236147765 instance=ExtResource("14_r0hsk")]
 position = Vector2(-63, 48)
 
-[node name="thewalking6" parent="." unique_id=116645385 instance=ExtResource("14_r0hsk")]
+[node name="thewalking6" parent="." unique_id=1762457564 instance=ExtResource("14_r0hsk")]
 position = Vector2(45, 48)
 
-[node name="thewalking7" parent="." unique_id=1101010696 instance=ExtResource("14_r0hsk")]
+[node name="thewalking7" parent="." unique_id=996008044 instance=ExtResource("14_r0hsk")]
 position = Vector2(-70, -64)
 
-[node name="thewalking8" parent="." unique_id=2077139296 groups=["kill"] instance=ExtResource("14_r0hsk")]
+[node name="thewalking8" parent="." unique_id=40203922 groups=["kill"] instance=ExtResource("14_r0hsk")]
 position = Vector2(73, -66)
+
+[node name="thewalking2" parent="." unique_id=2038422979 instance=ExtResource("14_r0hsk")]
+position = Vector2(-103, 4)

@@ -15,12 +15,20 @@ var active
 #level dynamic stuff
 var time
 var hearts = 3
-var star1
-var star2
-var star3
+var star1 = false
+var star2 = false
+var star3 = false
 var points = 0
 var colorflicker
 var spikecycle
+var begone = [] # collected coins, defeated enemies
+
+#checkpoint save
+var Cstar1 = false
+var Cstar2 = false
+var Cstar3 = false
+var Cpoints = 0
+var Cbegone = [] # collected coins, defeated emenies (saved in checkpoint edition)
 
 # level settings
 var max_y

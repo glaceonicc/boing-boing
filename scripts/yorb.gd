@@ -25,8 +25,7 @@ func _process(delta: float) -> void:
 		go_vector = gl.play_pos - position
 		linear_velocity = - go_vector.normalized() * 1750 * delta
 	else:
-		linear_velocity.x = move_toward(linear_velocity.x, 0, 1)
-		linear_velocity.y = move_toward(linear_velocity.y, 0, 1)
+		linear_velocity = Vector2(0, 0)
 		
 	if inside == true:
 		if gl.play_elevation > 5 and gl.play_elevation < 12:
@@ -53,8 +52,7 @@ func _on_sight_area_exited(area: Area2D) -> void:
 func reset():
 	reseting = true
 	go_vector = position
-	linear_velocity.x = 0
-	linear_velocity.y = 0
+	linear_velocity = Vector2(0, 0)
 	position = base
 	reseting = false
 	toreset = false

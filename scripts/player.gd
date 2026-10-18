@@ -160,8 +160,16 @@ func die():
 	if gl.checkpointnew == false:
 		position.x = checkpoint_x
 		position.y = checkpoint_y
+		gl.points = 0
+		gl.star1 = false
+		gl.star2 = false
+		gl.star3 = false
 	else:
 		position = gl.checkpointxy
+		gl.points = gl.Cpoints
+		gl.star1 = gl.Cstar1
+		gl.star2 = gl.Cstar2
+		gl.star3 = gl.Cstar3
 	gl.emit_signal("die")
 
 func blockflicker():
