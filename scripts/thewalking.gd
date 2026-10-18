@@ -13,7 +13,7 @@ var gravity = 10
 var elevation = 0
 
 func _ready() -> void:
-	$sprite.play("default")
+	$sprite.play("idle")
 	gl.connect("die", reset)
 	base = position
 
@@ -44,6 +44,10 @@ func _process(delta: float) -> void:
 	if elevation < -500:
 		gl.points +=100
 		queue_free()
+	if sight == true:
+		$sprite.play("walking")
+	else:
+		$sprite.play("idle")
 
 
 func _on_sight_area_entered(area: Area2D) -> void:

@@ -6,14 +6,51 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 54.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5bfg"]
+atlas = ExtResource("1_t2idg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r24l"]
+atlas = ExtResource("1_t2idg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83xmm"]
+atlas = ExtResource("1_t2idg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elkox"]
+atlas = ExtResource("1_t2idg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4qu8"]
+atlas = ExtResource("1_t2idg")
+region = Rect2(32, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t2idg")
+"texture": SubResource("AtlasTexture_b5bfg")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r24l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83xmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elkox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4qu8")
+}],
+"loop": 1,
+"name": &"walking",
 "speed": 5.0
 }]
 
@@ -46,6 +83,8 @@ debug_color = Color(0.83263934, 0.91502297, 1, 0.078431375)
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
 z_index = 4
 sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"walking"
+frame_progress = 0.75679797
 
 [node name="die" type="Area2D" parent="." unique_id=805278153]
 
