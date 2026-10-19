@@ -19,27 +19,31 @@ func _ready() -> void:
 	add_to_group("spike")
 
 func _process(delta: float) -> void:
-	if killed == false:
-		if sight == true and ground >= 1 and gl.active == true:
-			go_vector = gl.play_pos - position
-			linear_velocity = go_vector.normalized() * 3000 * delta
-		elif ground >= 1:
-			linear_velocity = Vector2(0, 0)
+	if gl.active == true:
+		
+		if killed == false:
+			if ground >= 1:
+				if sight == true:
+					go_vector = gl.play_pos - position
+					linear_velocity = go_vector.normalized() * 3000 * delta
+				else:
+					linear_velocity = Vector2(0, 0)
+			else:
+				vel_y -= gravity * delta
+			if elevation < -500:
+				gl.points +=100
+				killed = true
+			if elevation < 0:
+				$kill/hitbox.set_deferred("disabled", true)
+				remove_from_group("spike")
+			
+			elevation = floor(elevation + vel_y)
 		else:
-			vel_y -= gravity * delta
-
-		elevation = floor(elevation + vel_y)
-		$sprite.position.y = - elevation
-		if elevation < -500:
-			gl.points +=100
-			killed = true
-		if elevation < 0:
 			$kill/hitbox.set_deferred("disabled", true)
 			remove_from_group("spike")
-	else:
-		$kill/hitbox.set_deferred("disabled", true)
-		remove_from_group("spike")
-		visible = false
+			visible = false
+		
+	$sprite.position.y = - elevation
 
 func _on_sight_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collect") and elevation <= 0 :
@@ -50,13 +54,12 @@ func _on_sight_area_exited(area: Area2D) -> void:
 		sight = false
 
 func reset():
-	reseting = true
 	go_vector = position
 	linear_velocity = Vector2(0, 0)
 	position = base
+	vel_y = 0
+	elevation = 0
 	killed = false
-	reseting = false
-	toreset = false
 	visible = true
 	$kill/hitbox.set_deferred("disabled", false)
 	add_to_group("spike")

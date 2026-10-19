@@ -4,10 +4,9 @@ var sight = false
 var attacksight = false # if player is in range of being attacked
 var base
 var go_vector
-var reseting = false
 var inside = false
-var toreset = false # makes it not deal damage twice
 var canshoot = true
+var killed = false
 
 var yorbanana = load("res://elements/bullet.tscn") # yorb's stupid projectile
 
@@ -21,24 +20,25 @@ func _ready() -> void:
 	base = position
 
 func _process(delta: float) -> void:
-	if sight == true and gl.active == true:
-		go_vector = gl.play_pos - position
-		linear_velocity = - go_vector.normalized() * 1750 * delta
-	else:
-		linear_velocity = Vector2(0, 0)
-		
-	if inside == true:
-		if gl.play_elevation > 5 and gl.play_elevation < 12:
-			gl.emit_signal("boing")
-			gl.points+= 250
-			queue_free()
-		elif 0 <= gl.play_elevation and toreset == false and gl.play_elevation < 5:
-			gl.emit_signal("kill")
-			toreset = true
-		
-	if attacksight == true and canshoot == true and gl.active == true:
-		canshoot = false
-		shoot()
+	if gl.active == true:
+		if killed == false:
+			if sight == true:
+				go_vector = gl.play_pos - position
+				linear_velocity = - go_vector.normalized() * 1750 * delta
+			else:
+				linear_velocity = Vector2(0, 0)
+			if inside == true:
+				if gl.play_elevation > 5 and gl.play_elevation < 12:
+					gl.emit_signal("boing")
+					gl.points+= 250
+					killed = true 
+				elif 0 <= gl.play_elevation and gl.play_elevation < 5:
+					gl.emit_signal("kill")
+			if attacksight == true and canshoot == true:
+				canshoot = false
+				shoot()
+		else:
+			visible = false
 
 
 func _on_sight_area_entered(area: Area2D) -> void:
@@ -50,12 +50,11 @@ func _on_sight_area_exited(area: Area2D) -> void:
 		sight = false
 
 func reset():
-	reseting = true
 	go_vector = position
 	linear_velocity = Vector2(0, 0)
 	position = base
-	reseting = false
-	toreset = false
+	killed = false
+	visible = true
 
 func _on_kill_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collect"):

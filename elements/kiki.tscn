@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cun1w8353ayu5"]
+
+[ext_resource type="Texture2D" uid="uid://c6nm80ck0lgod" path="res://textures/kiki.png" id="1_e4me5"]
+[ext_resource type="Texture2D" uid="uid://bdopqrqc785by" path="res://textures/shinykiki.png" id="2_oleq2"]
+[ext_resource type="Script" uid="uid://cahounoimpb6j" path="res://kiki.gd" id="3_5gyt3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5y03"]
+atlas = ExtResource("1_e4me5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3i7a"]
+atlas = ExtResource("2_oleq2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbqe7"]
+atlas = ExtResource("2_oleq2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5y03")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3i7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbqe7")
+}],
+"loop": 1,
+"name": &"shiny",
+"speed": 3.0
+}]
+
+[node name="kiki" type="AnimatedSprite2D" unique_id=235843676]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"shiny"
+frame_progress = 0.35820377
+script = ExtResource("3_5gyt3")

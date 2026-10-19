@@ -34,6 +34,7 @@ var Cbegone = [] # collected coins, defeated emenies (saved in checkpoint editio
 var max_y
 var BPM
 var lvlname
+var lvltime
 
 # game dynamic stuff
 var lives = 5

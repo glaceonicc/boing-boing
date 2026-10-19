@@ -39,6 +39,7 @@ func _ready() -> void:
 	checkpoint_y = startpos_y
 	gl.checkpointnew = false
 	gl.time = time
+	gl.lvltime = time
 	gl.max_y = max_y
 	gl.BPM = BPM
 	
@@ -157,19 +158,25 @@ func _on_death_area_exited(area: Area2D) -> void:
 
 func die():
 	gl.hearts -= 1
-	if gl.checkpointnew == false:
+	if gl.checkpointnew == false: # respawning without a checkpoint
 		position.x = checkpoint_x
 		position.y = checkpoint_y
 		gl.points = 0
 		gl.star1 = false
 		gl.star2 = false
 		gl.star3 = false
-	else:
+		gl.time = time
+	else: # respawning from checkpoint
 		position = gl.checkpointxy
 		gl.points = gl.Cpoints
 		gl.star1 = gl.Cstar1
 		gl.star2 = gl.Cstar2
 		gl.star3 = gl.Cstar3
+		gl.time = time
+	active = false
+	$sprite.position.y = 0
+	$sprite.visible = true
+	$sprite.play("sprout")
 	gl.emit_signal("die")
 
 func blockflicker():

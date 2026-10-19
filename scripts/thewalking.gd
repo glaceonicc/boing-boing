@@ -42,18 +42,18 @@ func _process(delta: float) -> void:
 			
 			
 			elevation = floor(elevation + vel_y)
-			$sprite.position.y = - elevation
 			if elevation < -500:
 				gl.points +=100
 				killed = true
-			if sight == true:
-				$sprite.play("walking")
-			else:
-				$sprite.play("idle")
 		else:
 			visible = false
 			vel_y = 0
 			elevation = 0
+		$sprite.position.y = - elevation
+		if sight == true:
+			$sprite.play("walking")
+		else:
+			$sprite.play("idle")
 
 
 func _on_sight_area_entered(area: Area2D) -> void:
@@ -68,6 +68,8 @@ func reset():
 	go_vector = position
 	linear_velocity = Vector2(0, 0)
 	position = base
+	vel_y = 0
+	elevation = 0
 	killed = false
 	visible = true
 
