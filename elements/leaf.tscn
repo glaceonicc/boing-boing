@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqw73hjyf08bg" path="res://textures/enemies/leaf1.png" id="2_yhu1m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
-radius = 54.0
+radius = 63.007935
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -17,11 +17,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(14, 17)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(10.5, 10)
+size = Vector2(8, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdvhn"]
 radius = 7.017834
@@ -46,13 +43,6 @@ debug_color = Color(0.83263934, 0.91502297, 1, 0.078431375)
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
 z_index = 4
 sprite_frames = SubResource("SpriteFrames_57qmd")
-
-[node name="die" type="Area2D" parent="." unique_id=805278153]
-
-[node name="hitbox" type="CollisionShape2D" parent="die" unique_id=1334702076]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_yf5fn")
-debug_color = Color(0.8784314, 0.27058825, 0.40784314, 0.24313726)
 
 [node name="kill" type="Area2D" parent="." unique_id=107530660 groups=["spike"]]
 

@@ -18,6 +18,7 @@ config/icon="res://textures/icon.svg"
 [autoload]
 
 gl="*uid://fe38drbwawxm"
+tracks="*uid://dhj7lgao2qtce"
 
 [display]
 

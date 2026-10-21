@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://chdcubg6w0vxa"]
+
+[ext_resource type="Script" uid="uid://bunitdnt7a5ua" path="res://scripts/menu_credits.gd" id="1_mjpnw"]
+[ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/elements/life.png" id="2_mfsg6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrna5"]
+font_size = 12
+
+[node name="settings" type="Node2D" unique_id=131878246]
+script = ExtResource("1_mjpnw")
+
+[node name="Label" type="Label" parent="." unique_id=1386212395]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "hello"
+label_settings = SubResource("LabelSettings_xrna5")
+
+[node name="Button" type="Button" parent="." unique_id=1122113049]
+offset_left = 260.0
+offset_top = 3.0
+offset_right = 284.0
+offset_bottom = 27.0
+icon = ExtResource("2_mfsg6")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

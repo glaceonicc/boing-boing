@@ -8,7 +8,7 @@ func _ready() -> void:
 	gl.connect("die", reset)
 
 func _process(delta: float) -> void:
-	if gl.play_elevation < 15 and inside == true and gl.play_elevation > -1 and collected == false:
+	if gl.play_elevation < 15 and inside == true and gl.play_elevation >= 0 and collected == false:
 		if type == 1:
 			gl.points += 100
 		if type == 2:
@@ -50,6 +50,7 @@ func _on_area_exited(area: Area2D) -> void:
 		inside = false
 
 func reset():
+	inside = false
 	if collected == true:
 		if name not in gl.Cbegone:
 			collected = false

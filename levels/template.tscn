@@ -7,12 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://dwejv5jsvp0h2" path="res://elements/blinking_floor_red.tscn" id="5_jd5lg"]
 [ext_resource type="PackedScene" uid="uid://dj8vm6lebg7mq" path="res://elements/blinking_floor_blue.tscn" id="6_ul00k"]
 [ext_resource type="PackedScene" uid="uid://xtcdiqqff8u3" path="res://elements/spike.tscn" id="7_kweb5"]
+[ext_resource type="PackedScene" uid="uid://dyr0gq2eqd8gu" path="res://elements/spikewall.tscn" id="7_vfava"]
+[ext_resource type="PackedScene" uid="uid://dsh4j6t32julc" path="res://elements/crumbleblock.tscn" id="8_jd5lg"]
 [ext_resource type="PackedScene" uid="uid://bsad68itjqqd4" path="res://elements/coin.tscn" id="8_w02mg"]
 [ext_resource type="PackedScene" uid="uid://c6a3ffk3o6p6r" path="res://elements/heart.tscn" id="9_xobpx"]
 [ext_resource type="PackedScene" uid="uid://cqccxfos6fm24" path="res://elements/life.tscn" id="10_5thtb"]
 [ext_resource type="PackedScene" uid="uid://chuhn7ylax6dt" path="res://elements/moretime.tscn" id="11_dc8yu"]
+[ext_resource type="PackedScene" uid="uid://cek42fyk8hyum" path="res://elements/star1.tscn" id="12_8l2a5"]
 [ext_resource type="PackedScene" uid="uid://ke0k32p0w70l" path="res://elements/camera.tscn" id="12_kvvph"]
 [ext_resource type="PackedScene" uid="uid://de03v8q1a15ki" path="res://elements/player.tscn" id="13_bl5iq"]
+[ext_resource type="PackedScene" uid="uid://bwwjebb0bfcnv" path="res://elements/star2.tscn" id="13_vfava"]
+[ext_resource type="PackedScene" uid="uid://csg1aybtemkus" path="res://elements/star3.tscn" id="14_jd5lg"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_no1hg"]
 scenes/1/scene = ExtResource("2_2j1ev")
@@ -20,6 +25,8 @@ scenes/2/scene = ExtResource("3_8l2a5")
 scenes/3/scene = ExtResource("4_vfava")
 scenes/4/scene = ExtResource("5_jd5lg")
 scenes/5/scene = ExtResource("6_ul00k")
+scenes/6/scene = ExtResource("7_vfava")
+scenes/7/scene = ExtResource("8_jd5lg")
 
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
 physics_layer_0/collision_layer = 1
@@ -31,8 +38,12 @@ scenes/2/scene = ExtResource("8_w02mg")
 scenes/3/scene = ExtResource("9_xobpx")
 scenes/4/scene = ExtResource("10_5thtb")
 scenes/5/scene = ExtResource("11_dc8yu")
+scenes/6/scene = ExtResource("12_8l2a5")
+scenes/7/scene = ExtResource("13_vfava")
+scenes/8/scene = ExtResource("14_jd5lg")
 
 [sub_resource type="TileSet" id="TileSet_yf5fn"]
+tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetScenesCollectionSource_jjvit")
 
 [node name="changename" type="Node2D" unique_id=744283992]
@@ -44,6 +55,7 @@ tile_set = SubResource("TileSet_g4v7s")
 
 [node name="elementiles" type="TileMapLayer" parent="." unique_id=791288649]
 z_index = 3
+position = Vector2(4, 4)
 tile_set = SubResource("TileSet_yf5fn")
 
 [node name="Camera" parent="." unique_id=1866184742 instance=ExtResource("12_kvvph")]
@@ -53,3 +65,9 @@ position = Vector2(0, 61)
 startpos_y = 0
 max_y = 0
 levelname = "❀ template ♫ ~ none     "
+
+[node name="enemies" type="Node" parent="." unique_id=599362528]
+
+[node name="tutorial" type="Node" parent="." unique_id=872436526]
+
+[node name="elements" type="Node" parent="." unique_id=424604090]

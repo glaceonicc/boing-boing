@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://dgtrabkv4w4yl" path="res://scripts/yorb.gd" id="1_egwvr"]
 [ext_resource type="Texture2D" uid="uid://dktf834fr3jyj" path="res://textures/enemies/yorb1.png" id="2_egwvr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
-radius = 109.17875
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08wq5"]
+radius = 72.0
+height = 220.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 54.0
@@ -39,8 +40,9 @@ script = ExtResource("1_egwvr")
 
 [node name="attacksight" type="Area2D" parent="." unique_id=270266816]
 
-[node name="hitbox" type="CollisionShape2D" parent="attacksight" unique_id=852130978]
-shape = SubResource("CircleShape2D_yf5fn")
+[node name="hitbox" type="CollisionShape2D" parent="attacksight" unique_id=1223145908]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_08wq5")
 debug_color = Color(0.8666667, 0.6, 0.69803923, 0.0627451)
 
 [node name="sight" type="Area2D" parent="." unique_id=974728487]

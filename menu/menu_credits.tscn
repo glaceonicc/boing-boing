@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://hckehhlliku5"]
+
+[ext_resource type="Script" uid="uid://bunitdnt7a5ua" path="res://scripts/menu_credits.gd" id="1_cwm1p"]
+[ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/elements/life.png" id="2_0ivwt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrna5"]
+font_size = 12
+
+[node name="creditsmneu" type="Node2D" unique_id=131878246]
+script = ExtResource("1_cwm1p")
+
+[node name="Label" type="Label" parent="." unique_id=1386212395]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "credits
+playtesters:
+- Turek
+- Filip (krystian)
+- "
+label_settings = SubResource("LabelSettings_xrna5")
+
+[node name="Label2" type="Label" parent="." unique_id=153366224]
+offset_left = 140.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 73.0
+text = "inspirations:
+- super mario bros.
+- dadish
+- dragon land
+- deltarune"
+label_settings = SubResource("LabelSettings_xrna5")
+
+[node name="Button" type="Button" parent="." unique_id=1122113049]
+offset_left = 260.0
+offset_top = 3.0
+offset_right = 284.0
+offset_bottom = 27.0
+icon = ExtResource("2_0ivwt")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

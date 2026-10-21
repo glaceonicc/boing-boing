@@ -4,7 +4,6 @@ extends Area2D
 @export var c2 = true
 @export var c3 = true
 @export var c4 = true
-@export var c5 = true
 
 var owie: bool
 
@@ -29,11 +28,6 @@ func _process(delta: float) -> void:
 			owie = false
 	if gl.spikecycle == 4:
 		if c4 == true:
-			owie = true
-		else:
-			owie = false
-	if gl.spikecycle == 5:
-		if c5 == true:
 			owie = true
 		else:
 			owie = false

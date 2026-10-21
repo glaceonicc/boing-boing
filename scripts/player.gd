@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-# ong this is going to be painful
+# omg this is going to be painful
 
 # so i need to code my own gravity is_on_floor and jumping system thing because its gonna be a topdown game
 # flowerrrr
 
-var SPEED = 800.0 # the thing to multiply the velocity things by
+var SPEED = 600.0 # the thing to multiply the velocity things by
+var MAXSPEED = 125.0
 var JUMP_VELOCITY = 4.0 # like how high you jump i guess??
 
 var elevation = 0 # simulates position.y kinda i think. like position.y is now z and this is the y instead.
@@ -50,22 +51,23 @@ func _ready() -> void:
 	spikecycle()
 	
 	$sprite.play("sprout")
+	$shadow.visible = false
 	DisplayServer.window_set_title("PRESS SPACE TO START")
 	
 
 func _physics_process(delta: float) -> void:
 	if active == true:
 		if Input.is_action_pressed("left"):
-			velocity.x = move_toward(velocity.x, -150, SPEED * delta)
+			velocity.x = move_toward(velocity.x, -MAXSPEED, SPEED * delta)
 		elif Input.is_action_pressed("right"):
-			velocity.x = move_toward(velocity.x, 150, SPEED * delta)
+			velocity.x = move_toward(velocity.x, MAXSPEED, SPEED * delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0, 1.5 * SPEED * delta)
 		
 		if Input.is_action_pressed("up"):
-			velocity.y = move_toward(velocity.y, -150, SPEED * delta)
+			velocity.y = move_toward(velocity.y, -MAXSPEED, SPEED * delta)
 		elif Input.is_action_pressed("down"):
-			velocity.y = move_toward(velocity.y, 150, SPEED * delta)
+			velocity.y = move_toward(velocity.y, MAXSPEED, SPEED * delta)
 		else:
 			velocity.y = move_toward(velocity.y, 0, 1.5 * SPEED * delta)
 		
@@ -77,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		
 		# i searched "how to make gravity" on the internet in order to understand this stuff ;-;
 		
-		if Input.is_action_just_pressed("jump") and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.1 and ground < 1:
+		if Input.is_action_just_pressed("jump") and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.04 and ground < 1:
 			vel_y = JUMP_VELOCITY
 		elif elevation <= 0 and elevation > -4 and bounce == true:
 			vel_y = 5.0
@@ -94,20 +96,27 @@ func _physics_process(delta: float) -> void:
 		
 		elevation = floor(elevation + vel_y)
 		$sprite.position.y = - elevation
-		if elevation <= -500:
-			die()
-			elevation = 0
-			vel_y = 0
-			
 		
-
-			
-		move_and_slide()
-		if ground > 0 or bounce == true or spike > 0 and elevation > 0:
+		if ground >= 1 and elevation >= 0 or bounce == true and elevation >= 0 or spike >= 1 and elevation >= 0:
 			$shadow.visible = true
 		else:
 			$shadow.visible = false
+		
+		if elevation >= 0:
+			$dot.visible = true
+			z_index = 6
+		else:
+			$dot.visible = false
+			z_index = -10
+		if elevation <= -500:
+			die()
+		
+		move_and_slide()
+	
 	else:
+		z_index = 6
+		$shadow.visible = false
+		$dot.visible = false
 		if Input.is_action_just_pressed("jump"):
 			active = true
 			vel_y = JUMP_VELOCITY
@@ -116,6 +125,7 @@ func _physics_process(delta: float) -> void:
 			$shadow.visible = true
 			DisplayServer.window_set_title(levelname)
 			$timer.start()
+			move_and_slide()
 	gl.play_x = position.x
 	gl.play_y = position.y
 	gl.play_pos = position
@@ -125,6 +135,7 @@ func _physics_process(delta: float) -> void:
 	gl.active = active
 	gl.lvlname = levelname #wtf
 	#print(str(elevation))
+	
 
 # if you're touching at least one ground tile that means you are standing on the ground!
 func _on_g_area_entered(area: Area2D) -> void:
@@ -173,11 +184,14 @@ func die():
 		gl.star2 = gl.Cstar2
 		gl.star3 = gl.Cstar3
 		gl.time = time
+	move_and_slide()
+	gl.emit_signal("die")
 	active = false
+	elevation = 0
 	$sprite.position.y = 0
 	$sprite.visible = true
 	$sprite.play("sprout")
-	gl.emit_signal("die")
+	vel_y = 0
 
 func blockflicker():
 	var t = float(BPM) / 4
@@ -198,7 +212,7 @@ func _on_flickertimer_timeout() -> void:
 		flicker = true
 
 func _on_spiketimer_timeout() -> void:
-	if cycle < 5:
+	if cycle < 4:
 		cycle += 1
 	else:
 		cycle = 1

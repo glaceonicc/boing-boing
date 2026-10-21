@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dgjmx6rk7qglf"]
+
+[ext_resource type="Script" uid="uid://d3w0vm0870pir" path="res://scripts/world_player.gd" id="1_ai87o"]
+[ext_resource type="Texture2D" uid="uid://dexduommxef65" path="res://textures/boingy.png" id="1_ws63v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai87o"]
+atlas = ExtResource("1_ws63v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wkwq"]
+atlas = ExtResource("1_ws63v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai87o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wkwq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="thingy" type="Node2D" unique_id=266655257]
+script = ExtResource("1_ai87o")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=891812110]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+frame_progress = 0.761077
