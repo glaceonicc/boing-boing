@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b5q33afawxswh"]
+
+[ext_resource type="Texture2D" uid="uid://bcuuts355agp1" path="res://textures/elements/win.png" id="1_a283i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a283i")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_57qmd"]
+radius = 12.0
+
+[node name="win" type="Area2D" unique_id=1171225519 groups=["win"]]
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1224372510]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=1199075589]
+shape = SubResource("CircleShape2D_57qmd")

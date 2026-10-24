@@ -1,0 +1,269 @@
+[gd_scene format=3 uid="uid://c832qx5fi2d8p"]
+
+[ext_resource type="Script" uid="uid://binugc215qsf8" path="res://scripts/winscreen.gd" id="1_h3yos"]
+[ext_resource type="Texture2D" uid="uid://bp1xffxissg5b" path="res://textures/menu/winbg.png" id="2_ehxyi"]
+[ext_resource type="Texture2D" uid="uid://cikch58nwf4yq" path="res://textures/elements/nostar.png" id="3_dvt3n"]
+[ext_resource type="Texture2D" uid="uid://u4gi02txo8tc" path="res://textures/elements/star.png" id="4_nah7l"]
+[ext_resource type="Texture2D" uid="uid://dfq0plq64feqh" path="res://textures/elements/goldenflower.png" id="5_a3hdk"]
+[ext_resource type="Texture2D" uid="uid://bhs5fuubyo78m" path="res://textures/elements/noflower.png" id="5_nah7l"]
+[ext_resource type="Texture2D" uid="uid://ueb3wiyp8ay5" path="res://textures/elements/chromaflower.png" id="6_8hisa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_yf5fn"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_57qmd"]
+font_size = 7
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dvt3n")
+}],
+"loop": 1,
+"name": &"no",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nah7l")
+}],
+"loop": 1,
+"name": &"yes",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3gngh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_nah7l")
+}],
+"loop": 1,
+"name": &"no",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a3hdk")
+}],
+"loop": 1,
+"name": &"yes",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t0n4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_nah7l")
+}],
+"loop": 1,
+"name": &"no",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8hisa")
+}],
+"loop": 1,
+"name": &"yes",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d0u6y"]
+line_spacing = 1.0
+font_size = 6
+
+[node name="winscreen" type="Node2D" unique_id=301977052]
+z_index = 20
+script = ExtResource("1_h3yos")
+
+[node name="bg" type="Sprite2D" parent="." unique_id=1428275666]
+process_mode = 3
+position = Vector2(144, -81)
+texture = ExtResource("2_ehxyi")
+
+[node name="complete" type="Label" parent="." unique_id=1714942375]
+process_mode = 3
+offset_left = 72.0
+offset_top = 3.0
+offset_right = 218.0
+offset_bottom = 26.0
+text = "LEVEL COMPLETE!!!"
+
+[node name="levelname" type="Label" parent="." unique_id=1366475223]
+process_mode = 3
+offset_left = 102.0
+offset_top = 27.0
+offset_right = 193.0
+offset_bottom = 50.0
+text = "0-0: levelname"
+label_settings = SubResource("LabelSettings_g4v7s")
+
+[node name="c" type="Label" parent="." unique_id=1423144056]
+process_mode = 3
+offset_left = 10.0
+offset_top = 48.0
+offset_right = 175.0
+offset_bottom = 62.0
+text = "collectables obtained:"
+label_settings = SubResource("LabelSettings_yf5fn")
+
+[node name="cbonus" type="Label" parent="." unique_id=608823688]
+process_mode = 3
+offset_left = 10.0
+offset_top = 61.0
+offset_right = 175.0
+offset_bottom = 72.0
+text = "bonus:"
+label_settings = SubResource("LabelSettings_57qmd")
+
+[node name="e" type="Label" parent="." unique_id=500384648]
+process_mode = 3
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 175.0
+offset_bottom = 84.0
+text = "enemies defeated:"
+label_settings = SubResource("LabelSettings_yf5fn")
+
+[node name="ebonus" type="Label" parent="." unique_id=1039251833]
+process_mode = 3
+offset_left = 10.0
+offset_top = 84.0
+offset_right = 175.0
+offset_bottom = 95.0
+text = "bonus:"
+label_settings = SubResource("LabelSettings_57qmd")
+
+[node name="t" type="Label" parent="." unique_id=1504241553]
+process_mode = 3
+offset_left = 10.0
+offset_top = 93.0
+offset_right = 175.0
+offset_bottom = 107.0
+text = "time left:"
+label_settings = SubResource("LabelSettings_yf5fn")
+
+[node name="star1" type="AnimatedSprite2D" parent="." unique_id=2040496012]
+process_mode = 3
+position = Vector2(19, 117)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"yes"
+
+[node name="star2" type="AnimatedSprite2D" parent="." unique_id=1852684831]
+process_mode = 3
+position = Vector2(47, 117)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"yes"
+
+[node name="star3" type="AnimatedSprite2D" parent="." unique_id=369375639]
+process_mode = 3
+position = Vector2(73, 117)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"yes"
+
+[node name="gflower1" type="AnimatedSprite2D" parent="." unique_id=1179508078]
+process_mode = 3
+position = Vector2(213, 94)
+sprite_frames = SubResource("SpriteFrames_3gngh")
+animation = &"yes"
+
+[node name="gflower2" type="AnimatedSprite2D" parent="." unique_id=562702305]
+process_mode = 3
+position = Vector2(213, 109)
+sprite_frames = SubResource("SpriteFrames_3gngh")
+animation = &"yes"
+
+[node name="gflower3" type="AnimatedSprite2D" parent="." unique_id=258018510]
+process_mode = 3
+position = Vector2(213, 124)
+sprite_frames = SubResource("SpriteFrames_3gngh")
+animation = &"yes"
+
+[node name="gflower4" type="AnimatedSprite2D" parent="." unique_id=107614043]
+process_mode = 3
+position = Vector2(213, 139)
+sprite_frames = SubResource("SpriteFrames_t0n4m")
+animation = &"yes"
+
+[node name="total" type="Label" parent="." unique_id=1070499307]
+process_mode = 3
+offset_left = 70.0
+offset_top = 125.0
+offset_right = 184.0
+offset_bottom = 139.0
+text = "total score:"
+label_settings = SubResource("LabelSettings_yf5fn")
+
+[node name="total2" type="Label" parent="." unique_id=100159763]
+process_mode = 3
+offset_left = 89.0
+offset_top = 142.0
+offset_right = 208.0
+offset_bottom = 156.0
+text = "press space to continue"
+label_settings = SubResource("LabelSettings_yf5fn")
+
+[node name="total3" type="Label" parent="." unique_id=2113574396]
+process_mode = 3
+offset_left = 89.0
+offset_top = 142.0
+offset_right = 208.0
+offset_bottom = 156.0
+text = "press space to continue"
+label_settings = SubResource("LabelSettings_yf5fn")
+
+[node name="info" type="Label" parent="." unique_id=511284478]
+process_mode = 3
+offset_left = 215.0
+offset_top = 22.0
+offset_right = 307.0
+offset_bottom = 81.0
+text = "there will be an epic
+thing that shows 
+your score and how 
+close you are to 
+getting flowers when i make
+that"
+label_settings = SubResource("LabelSettings_d0u6y")
+
+[node name="gpoints1" type="Label" parent="." unique_id=2065583599]
+process_mode = 3
+offset_left = 224.0
+offset_top = 88.0
+offset_right = 275.0
+offset_bottom = 99.0
+text = "points1"
+label_settings = SubResource("LabelSettings_d0u6y")
+
+[node name="gpoints2" type="Label" parent="." unique_id=1748633411]
+process_mode = 3
+offset_left = 224.0
+offset_top = 103.0
+offset_right = 275.0
+offset_bottom = 114.0
+text = "points2"
+label_settings = SubResource("LabelSettings_d0u6y")
+
+[node name="gpoints3" type="Label" parent="." unique_id=1918994379]
+process_mode = 3
+offset_left = 224.0
+offset_top = 118.0
+offset_right = 275.0
+offset_bottom = 129.0
+text = "points3"
+label_settings = SubResource("LabelSettings_d0u6y")
+
+[node name="cpoints" type="Label" parent="." unique_id=531554498]
+process_mode = 3
+offset_left = 223.0
+offset_top = 133.0
+offset_right = 274.0
+offset_bottom = 144.0
+text = "pointsmax"
+label_settings = SubResource("LabelSettings_d0u6y")

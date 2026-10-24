@@ -4,6 +4,7 @@ extends Camera2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	gl.connect("die", reset)
+	gl.connect("win", win)
  # FIX OMG
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -53,3 +54,10 @@ func hearts():
 		_3.play("yes")
 	else:
 		_3.play("no")
+
+func win():
+	var winscene = load("res://winscreen.tscn")
+	var wins = winscene.instantiate()
+	wins.position = Vector2(-144.0,-81.0)
+	add_child(wins)
+	gl.pause = true

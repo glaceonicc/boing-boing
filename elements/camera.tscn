@@ -70,6 +70,7 @@ animations = [{
 }]
 
 [node name="Camera" type="Camera2D" unique_id=1866184742]
+process_mode = 3
 z_index = 4
 script = ExtResource("1_l6h3d")
 

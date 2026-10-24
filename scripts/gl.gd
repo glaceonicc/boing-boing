@@ -22,6 +22,7 @@ var points = 0
 var colorflicker
 var spikecycle
 var begone = [] # collected coins, defeated enemies
+var pause = false
 
 #checkpoint save
 var Cstar1 = false
@@ -39,6 +40,7 @@ var lvltime
 # game dynamic stuff
 var lives = 5
 var goldenflowers = 0
+var chromaflowers = 0
 var stars = 0
 
 
@@ -46,6 +48,7 @@ var stars = 0
 signal die
 signal kill
 signal boing
+signal win
 
 
 func _ready() -> void:

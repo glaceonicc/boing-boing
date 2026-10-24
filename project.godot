@@ -42,6 +42,7 @@ collect="used for collecting coins and stuff"
 defeat="defeats enemies"
 kill="kills you. no matter what."
 g="player's ground hitbox"
+win="level complete!"
 
 [input]
 

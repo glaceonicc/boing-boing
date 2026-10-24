@@ -43,6 +43,8 @@ func _ready() -> void:
 	gl.lvltime = time
 	gl.max_y = max_y
 	gl.BPM = BPM
+	gl.hearts = 3
+	gl.points = 0
 	
 	gl.connect("kill", die)
 	gl.connect("boing", boing)
@@ -56,85 +58,86 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if active == true:
-		if Input.is_action_pressed("left"):
-			velocity.x = move_toward(velocity.x, -MAXSPEED, SPEED * delta)
-		elif Input.is_action_pressed("right"):
-			velocity.x = move_toward(velocity.x, MAXSPEED, SPEED * delta)
-		else:
-			velocity.x = move_toward(velocity.x, 0, 1.5 * SPEED * delta)
-		
-		if Input.is_action_pressed("up"):
-			velocity.y = move_toward(velocity.y, -MAXSPEED, SPEED * delta)
-		elif Input.is_action_pressed("down"):
-			velocity.y = move_toward(velocity.y, MAXSPEED, SPEED * delta)
-		else:
-			velocity.y = move_toward(velocity.y, 0, 1.5 * SPEED * delta)
-		
-		#ahhhhhhh how to physics
-		# so like: elevation is position.y, and if it's = 0 and you're touching floortiles, that means you're on the ground
-		# vel_y is kind of like velocity.y, but its not a vector
-		# and JUMP_VELOCITY is what you add to velocity to jump
-		# and gravity. the thing that pulls you to the ground and makes you not want to get up anymore.
-		
-		# i searched "how to make gravity" on the internet in order to understand this stuff ;-;
-		
-		if Input.is_action_just_pressed("jump") and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.04 and ground < 1:
-			vel_y = JUMP_VELOCITY
-		elif elevation <= 0 and elevation > -4 and bounce == true:
-			vel_y = 5.0
-		elif ground >= 1 and elevation <= 0 and elevation > -3:
-			vel_y = 0
-			elevation = 0
-			airtime = 0.0
-		else:
-			vel_y -= gravity * delta
-			airtime += delta
-		
-		if elevation == 0 and spike >= 1:
-			die()
-		
-		elevation = floor(elevation + vel_y)
-		$sprite.position.y = - elevation
-		
-		if ground >= 1 and elevation >= 0 or bounce == true and elevation >= 0 or spike >= 1 and elevation >= 0:
-			$shadow.visible = true
-		else:
-			$shadow.visible = false
-		
-		if elevation >= 0:
-			$dot.visible = true
-			z_index = 6
-		else:
-			$dot.visible = false
-			z_index = -10
-		if elevation <= -500:
-			die()
-		
-		move_and_slide()
-	
-	else:
-		z_index = 6
-		$shadow.visible = false
-		$dot.visible = false
-		if Input.is_action_just_pressed("jump"):
-			active = true
-			vel_y = JUMP_VELOCITY
-			$sprite.play("down")
-			$dot.visible = true
-			$shadow.visible = true
-			DisplayServer.window_set_title(levelname)
-			$timer.start()
+	if gl.pause == false:
+		if active == true:
+			if Input.is_action_pressed("left"):
+				velocity.x = move_toward(velocity.x, -MAXSPEED, SPEED * delta)
+			elif Input.is_action_pressed("right"):
+				velocity.x = move_toward(velocity.x, MAXSPEED, SPEED * delta)
+			else:
+				velocity.x = move_toward(velocity.x, 0, 1.5 * SPEED * delta)
+			
+			if Input.is_action_pressed("up"):
+				velocity.y = move_toward(velocity.y, -MAXSPEED, SPEED * delta)
+			elif Input.is_action_pressed("down"):
+				velocity.y = move_toward(velocity.y, MAXSPEED, SPEED * delta)
+			else:
+				velocity.y = move_toward(velocity.y, 0, 1.5 * SPEED * delta)
+			
+			#ahhhhhhh how to physics
+			# so like: elevation is position.y, and if it's = 0 and you're touching floortiles, that means you're on the ground
+			# vel_y is kind of like velocity.y, but its not a vector
+			# and JUMP_VELOCITY is what you add to velocity to jump
+			# and gravity. the thing that pulls you to the ground and makes you not want to get up anymore.
+			
+			# i searched "how to make gravity" on the internet in order to understand this stuff ;-;
+			
+			if Input.is_action_just_pressed("jump") and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.04 and ground < 1:
+				vel_y = JUMP_VELOCITY
+			elif elevation <= 0 and elevation > -4 and bounce == true:
+				vel_y = 5.0
+			elif ground >= 1 and elevation <= 0 and elevation > -3:
+				vel_y = 0
+				elevation = 0
+				airtime = 0.0
+			else:
+				vel_y -= gravity * delta
+				airtime += delta
+			
+			if elevation == 0 and spike >= 1:
+				die()
+			
+			elevation = floor(elevation + vel_y)
+			$sprite.position.y = - elevation
+			
+			if ground >= 1 and elevation >= 0 or bounce == true and elevation >= 0 or spike >= 1 and elevation >= 0:
+				$shadow.visible = true
+			else:
+				$shadow.visible = false
+			
+			if elevation >= 0:
+				$dot.visible = true
+				z_index = 6
+			else:
+				$dot.visible = false
+				z_index = -10
+			if elevation <= -500:
+				die()
+			
 			move_and_slide()
-	gl.play_x = position.x
-	gl.play_y = position.y
-	gl.play_pos = position
-	gl.play_elevation = elevation
-	gl.colorflicker = flicker
-	gl.spikecycle = cycle
-	gl.active = active
-	gl.lvlname = levelname #wtf
-	#print(str(elevation))
+		
+		else:
+			z_index = 6
+			$shadow.visible = false
+			$dot.visible = false
+			if Input.is_action_just_pressed("jump"):
+				active = true
+				vel_y = JUMP_VELOCITY
+				$sprite.play("down")
+				$dot.visible = true
+				$shadow.visible = true
+				DisplayServer.window_set_title(levelname)
+				$timer.start()
+				move_and_slide()
+		gl.play_x = position.x
+		gl.play_y = position.y
+		gl.play_pos = position
+		gl.play_elevation = elevation
+		gl.colorflicker = flicker
+		gl.spikecycle = cycle
+		gl.active = active
+		gl.lvlname = levelname #wtf
+		#print(str(elevation))
 	
 
 # if you're touching at least one ground tile that means you are standing on the ground!
@@ -143,6 +146,8 @@ func _on_g_area_entered(area: Area2D) -> void:
 		ground += 1
 	if area.is_in_group("bouncer"):
 		bounce = true
+	if area.is_in_group("win"):
+		gl.emit_signal("win")
 
 
 func _on_g_area_exited(area: Area2D) -> void:
@@ -168,30 +173,35 @@ func _on_death_area_exited(area: Area2D) -> void:
 		spike -= 1
 
 func die():
-	gl.hearts -= 1
-	if gl.checkpointnew == false: # respawning without a checkpoint
-		position.x = checkpoint_x
-		position.y = checkpoint_y
-		gl.points = 0
-		gl.star1 = false
-		gl.star2 = false
-		gl.star3 = false
-		gl.time = time
-	else: # respawning from checkpoint
-		position = gl.checkpointxy
-		gl.points = gl.Cpoints
-		gl.star1 = gl.Cstar1
-		gl.star2 = gl.Cstar2
-		gl.star3 = gl.Cstar3
-		gl.time = time
-	move_and_slide()
-	gl.emit_signal("die")
-	active = false
-	elevation = 0
-	$sprite.position.y = 0
-	$sprite.visible = true
-	$sprite.play("sprout")
-	vel_y = 0
+	if gl.pause == false:
+		if gl.hearts == 1:
+			gl.lives -= 1
+			get_tree().change_scene_to_file(tracks.current_world_scene)
+		else:
+			gl.hearts -= 1
+			if gl.checkpointnew == false: # respawning without a checkpoint
+				position.x = checkpoint_x
+				position.y = checkpoint_y
+				gl.points = 0
+				gl.star1 = false
+				gl.star2 = false
+				gl.star3 = false
+				gl.time = time
+			else: # respawning from checkpoint
+				position = gl.checkpointxy
+				gl.points = gl.Cpoints
+				gl.star1 = gl.Cstar1
+				gl.star2 = gl.Cstar2
+				gl.star3 = gl.Cstar3
+				gl.time = time
+			move_and_slide()
+			gl.emit_signal("die")
+			active = false
+			elevation = 0
+			$sprite.position.y = 0
+			$sprite.visible = true
+			$sprite.play("sprout")
+			vel_y = 0
 
 func blockflicker():
 	var t = float(BPM) / 4

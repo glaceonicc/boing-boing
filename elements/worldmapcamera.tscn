@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://d03aqve10yw0r"]
+
+[ext_resource type="Script" uid="uid://dhob4koatyy56" path="res://scripts/worldcamera.gd" id="1_mi70q"]
+[ext_resource type="Texture2D" uid="uid://dfq0plq64feqh" path="res://textures/elements/goldenflower.png" id="2_u7ryx"]
+[ext_resource type="Texture2D" uid="uid://u4gi02txo8tc" path="res://textures/elements/star.png" id="3_y81mh"]
+[ext_resource type="Texture2D" uid="uid://ueb3wiyp8ay5" path="res://textures/elements/chromaflower.png" id="3_ywcj5"]
+[ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/elements/life.png" id="4_jlquf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kft3f"]
+font_size = 12
+
+[node name="worldmapcamera" type="Camera2D" unique_id=1688473757]
+script = ExtResource("1_mi70q")
+
+[node name="worldname" type="Label" parent="." unique_id=1380655678]
+offset_left = -142.0
+offset_top = -80.0
+offset_right = -102.0
+offset_bottom = -57.0
+text = "world1"
+label_settings = SubResource("LabelSettings_kft3f")
+
+[node name="star" type="Sprite2D" parent="." unique_id=1908011683]
+position = Vector2(-32, -72)
+texture = ExtResource("3_y81mh")
+
+[node name="goldf" type="Sprite2D" parent="." unique_id=2589828]
+position = Vector2(16, -72)
+texture = ExtResource("2_u7ryx")
+
+[node name="chromaf" type="Sprite2D" parent="." unique_id=380251587]
+position = Vector2(64, -72)
+texture = ExtResource("3_ywcj5")
+
+[node name="life" type="Sprite2D" parent="." unique_id=159508123]
+position = Vector2(104, -72)
+texture = ExtResource("4_jlquf")
+
+[node name="star count" type="Label" parent="." unique_id=604629314]
+offset_left = -24.0
+offset_top = -80.0
+offset_right = 4.0
+offset_bottom = -57.0
+text = "0"
+label_settings = SubResource("LabelSettings_kft3f")
+
+[node name="goldf count" type="Label" parent="." unique_id=588835097]
+offset_left = 24.0
+offset_top = -80.0
+offset_right = 53.0
+offset_bottom = -57.0
+text = "0"
+label_settings = SubResource("LabelSettings_kft3f")
+
+[node name="chromaf count" type="Label" parent="." unique_id=110500889]
+offset_left = 72.0
+offset_top = -80.0
+offset_right = 104.0
+offset_bottom = -57.0
+text = "0"
+label_settings = SubResource("LabelSettings_kft3f")
+
+[node name="life count" type="Label" parent="." unique_id=1260914388]
+offset_left = 112.0
+offset_top = -80.0
+offset_right = 144.0
+offset_bottom = -57.0
+text = "0"
+label_settings = SubResource("LabelSettings_kft3f")

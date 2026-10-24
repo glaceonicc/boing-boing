@@ -6,6 +6,8 @@ extends Node
 
 var current_world = "world0"
 var current_point = "p1"
+var current_world_scene = ""
+var current_world_name = ""
 
 # im not sure if exporting these does anything but im a bit fan of exported variables so yeah.
 @export var world0: Dictionary = {
