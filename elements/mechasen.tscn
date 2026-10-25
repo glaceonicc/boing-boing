@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cryxnidhttfd1"]
+
+[ext_resource type="Script" uid="uid://b0hfn0jxh5lwe" path="res://scripts/sen.gd" id="1_td03w"]
+[ext_resource type="Texture2D" uid="uid://ev6jcdvcfok6" path="res://textures/enemies/mechasen1.png" id="2_td03w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_td03w")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(11.313711, 11.313711)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(9.899496, 9.899496)
+
+[node name="sen" type="RigidBody2D" unique_id=1394963580]
+z_index = 4
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_td03w")
+mecha = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
+z_index = 4
+sprite_frames = SubResource("SpriteFrames_57qmd")
+
+[node name="kill" type="Area2D" parent="." unique_id=107530660]
+
+[node name="hitbox" type="CollisionShape2D" parent="kill" unique_id=1028904047]
+position = Vector2(5.9604645e-08, -1.7881393e-07)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_57qmd")
+debug_color = Color(0.77269053, 0.15136263, 0.99999994, 0.41960785)
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=262030626]
+position = Vector2(0, -1.4901161e-07)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[connection signal="area_entered" from="kill" to="." method="_on_kill_area_entered"]
+[connection signal="area_exited" from="kill" to="." method="_on_kill_area_exited"]

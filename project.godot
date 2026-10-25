@@ -43,6 +43,7 @@ defeat="defeats enemies"
 kill="kills you. no matter what."
 g="player's ground hitbox"
 win="level complete!"
+leaf=""
 
 [input]
 

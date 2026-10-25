@@ -23,8 +23,8 @@ size = Vector2(8, 8)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdvhn"]
 radius = 7.017834
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
-size = Vector2(20, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cs0pa"]
+radius = 8.0
 
 [node name="leaf" type="RigidBody2D" unique_id=1394963580]
 z_index = 4
@@ -55,10 +55,10 @@ position = Vector2(0, -0.5)
 shape = SubResource("CircleShape2D_rdvhn")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[node name="wtf" type="Area2D" parent="." unique_id=2001866224]
+[node name="wallbreak" type="Area2D" parent="." unique_id=2001866224 groups=["leaf"]]
 
-[node name="hitbox" type="CollisionShape2D" parent="wtf" unique_id=876963761]
-shape = SubResource("RectangleShape2D_d0u6y")
+[node name="hitbox" type="CollisionShape2D" parent="wallbreak" unique_id=876963761]
+shape = SubResource("CircleShape2D_cs0pa")
 
 [connection signal="area_entered" from="sight" to="." method="_on_sight_area_entered"]
 [connection signal="area_exited" from="sight" to="." method="_on_sight_area_exited"]

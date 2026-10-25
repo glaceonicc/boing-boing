@@ -11,6 +11,7 @@ var killed = false
 @export var count = 3 #how many object are there
 @export var speed = 2.5
 @export var direction = 1 #set it to -1 to make it spin the other way
+@export var mecha = false
 
 var r = load("res://elements/rotator.tscn")
 
@@ -36,7 +37,7 @@ func _process(delta: float) -> void:
 		if killed == false:
 			
 			if inside == true:
-				if gl.play_elevation > 5 and gl.play_elevation < 12:
+				if gl.play_elevation > 5 and gl.play_elevation < 12 and mecha == false:
 					gl.emit_signal("boing")
 					gl.points+= 250
 					killed = true 
