@@ -10,25 +10,26 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if gl.play_elevation < 15 and inside == true and gl.play_elevation >= 0 and collected == false:
 		if type == 1:
-			gl.points += 100
+			gl.cpoints += 100
 		if type == 2:
 			if gl.hearts < 3:
 				gl.hearts += 1
-				gl.points += 100
+				gl.cpoints += 100
 			else:
-				gl.points += 1000
+				gl.cpoints += 100
+				gl.bcpoints += 1000
 		if type == 3:
 			gl.lives += 1
-			gl.points += 1000
+			gl.cpoints += 1000
 		if type == 4:
 			gl.star1 = true
-			gl.points += 1000
+			gl.spoints += 1000
 		if type == 5:
 			gl.star2 = true
-			gl.points += 1000
+			gl.spoints += 1000
 		if type == 6:
 			gl.star3 = true
-			gl.points += 1000
+			gl.spoints += 1000
 		if type == 7:
 			gl.time += 10
 		collected = true

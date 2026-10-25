@@ -200,16 +200,7 @@ offset_bottom = 139.0
 text = "total score:"
 label_settings = SubResource("LabelSettings_yf5fn")
 
-[node name="total2" type="Label" parent="." unique_id=100159763]
-process_mode = 3
-offset_left = 89.0
-offset_top = 142.0
-offset_right = 208.0
-offset_bottom = 156.0
-text = "press space to continue"
-label_settings = SubResource("LabelSettings_yf5fn")
-
-[node name="total3" type="Label" parent="." unique_id=2113574396]
+[node name="pressspace" type="Label" parent="." unique_id=100159763]
 process_mode = 3
 offset_left = 89.0
 offset_top = 142.0

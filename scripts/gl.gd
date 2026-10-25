@@ -18,17 +18,36 @@ var hearts = 3
 var star1 = false
 var star2 = false
 var star3 = false
-var points = 0
+
+var points = 0 #all of the points below added together
+
+var epoints = 0 # points gained from killing enemies
+var bepoints = 0 # points gained from enemy kill combos
+var cpoints = 0 # points gained from collecting stuff
+var bcpoints = 0 # points gained from hearts on max health
+var spoints = 0 # points gained from stars
+
 var colorflicker
 var spikecycle
 var begone = [] # collected coins, defeated enemies
 var pause = false
 
+var a1 = 0 # the flowerbar and chromabar variables
+var a2 = 0
+var a3 = 0
+var a4 = 0
+
 #checkpoint save
 var Cstar1 = false
 var Cstar2 = false
 var Cstar3 = false
-var Cpoints = 0
+
+var Cepoints = 0
+var Cbepoints = 0 
+var Ccpoints = 0 
+var Cbcpoints = 0 
+var Cspoints = 0
+
 var Cbegone = [] # collected coins, defeated emenies (saved in checkpoint edition)
 
 # level settings

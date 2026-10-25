@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 			else:
 				vel_y -= gravity * delta
 			if elevation < -500:
-				gl.points +=100
+				gl.epoints +=250
 				killed = true
 			if elevation < 0:
 				$kill/hitbox.set_deferred("disabled", true)

@@ -18,14 +18,14 @@ func _process(delta: float) -> void:
 			if sight == true:
 				# thank you godot forum for this solution
 				go_vector = gl.play_pos - position
-				linear_velocity = go_vector.normalized() * 1000 * delta
+				linear_velocity = go_vector.normalized() * 1500 * delta
 				# my previous script that went through walls for some reason
 			else:
 				linear_velocity = Vector2(0, 0)
 			if inside == true:
 				if gl.play_elevation > 5 and gl.play_elevation < 12:
 					gl.emit_signal("boing")
-					gl.points+= 100
+					gl.epoints+= 150
 					killed = true
 				elif 0 <= gl.play_elevation and gl.play_elevation < 5:
 					gl.emit_signal("kill")

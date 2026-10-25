@@ -8,7 +8,20 @@ func _ready() -> void:
 	await tween.finished
 	$complete.visible = true
 	
-
+	$levelname.text = gl.lvlname
+	
+	$c.text = "collectables collected: "+str(gl.cpoints)
+	$cbonus.text ="bonus: "+str(gl.bcpoints)
+	$e.text = "enemies defeated: "+str(gl.epoints)
+	$ebonus.text = "combo bonus: "+str(gl.bepoints)
+	$t.text = "time bonus:"
+	
+	$total.text = "total score: "+gl.points
+	
+	$gpoints1.text = str(gl.a1)
+	$gpoints2.text = str(gl.a2)
+	$gpoints3.text = str(gl.a3)
+	$cpoints.text = str(gl.a4)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

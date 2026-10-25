@@ -52,6 +52,11 @@ func _ready() -> void:
 	gl.hearts = 3
 	gl.points = 0
 	
+	gl.a1 = flowerbar1
+	gl.a2 = flowerbar2
+	gl.a3 = flowerbar3
+	gl.a4 = chromabar
+	
 	gl.connect("kill", die)
 	gl.connect("boing", boing)
 	
@@ -143,6 +148,7 @@ func _physics_process(delta: float) -> void:
 		gl.spikecycle = cycle
 		gl.active = active
 		gl.lvlname = levelname #wtf
+		gl.points = gl.cpoints + gl.bcpoints + gl.epoints + gl.bepoints + gl.spoints
 		#print(str(elevation))
 	
 
@@ -191,14 +197,24 @@ func die():
 			if gl.checkpointnew == false: # respawning without a checkpoint
 				position.x = checkpoint_x
 				position.y = checkpoint_y
-				gl.points = 0
 				gl.star1 = false
 				gl.star2 = false
 				gl.star3 = false
 				gl.time = time
+				gl.epoints = 0
+				gl.bepoints = 0 
+				gl.cpoints = 0 
+				gl.bcpoints = 0 
+				gl.spoints = 0
 			else: # respawning from checkpoint
 				position = gl.checkpointxy
-				gl.points = gl.Cpoints
+				
+				gl.epoints = gl.Cepoints
+				gl.bepoints = gl.Cbepoints
+				gl.cpoints = gl.Ccpoints
+				gl.bcpoints = gl.Cbcpoints 
+				gl.spoints = gl.Cspoints
+				
 				gl.star1 = gl.Cstar1
 				gl.star2 = gl.Cstar2
 				gl.star3 = gl.Cstar3

@@ -16,6 +16,12 @@ func _on_area_entered(area: Area2D) -> void:
 		gl.Cstar1 = gl.star1
 		gl.Cstar2 = gl.star2
 		gl.Cstar3 = gl.star3
-		gl.Cpoints = gl.points
+		
+		gl.Cepoints = gl.epoints
+		gl.Cbepoints = gl.bepoints
+		gl.Ccpoints = gl.cpoints 
+		gl.Cbcpoints = gl.bcpoints 
+		gl.Cspoints = gl.spoints
+		
 		gl.Cbegone += gl.begone
 		gl.begone.clear()

@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 			if inside == true:
 				if gl.play_elevation > 5 and gl.play_elevation < 12 and mecha == false:
 					gl.emit_signal("boing")
-					gl.points+= 250
+					gl.epoints+= 200
 					killed = true 
 				elif 0 <= gl.play_elevation and gl.play_elevation < 5:
 					gl.emit_signal("kill")
