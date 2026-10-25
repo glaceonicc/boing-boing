@@ -26,6 +26,7 @@ var bepoints = 0 # points gained from enemy kill combos
 var cpoints = 0 # points gained from collecting stuff
 var bcpoints = 0 # points gained from hearts on max health
 var spoints = 0 # points gained from stars
+var tpoints = 0 # points from time left
 
 var colorflicker
 var spikecycle

@@ -25,3 +25,8 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		gl.Cbegone += gl.begone
 		gl.begone.clear()
+		
+		if gl.hearts < 3:
+			gl.hearts += 1
+		else:
+			gl.bcpoints += 1000
