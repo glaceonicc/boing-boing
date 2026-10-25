@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bdpyi1ne24337"]
+
+[ext_resource type="Texture2D" uid="uid://6l7hcy0670eo" path="res://textures/elements/spikeball.png" id="1_fg73c"]
+[ext_resource type="Script" uid="uid://cxmtj1bbelfhd" path="res://scripts/spikeball.gd" id="1_yptw2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yptw2"]
+radius = 7.0
+
+[node name="spike" type="Area2D" unique_id=143202304 groups=["spike"]]
+script = ExtResource("1_yptw2")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=889452847]
+texture = ExtResource("1_fg73c")
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=1865350960]
+shape = SubResource("CircleShape2D_yptw2")
+debug_color = Color(0.99861974, 0, 0.14905396, 0.41960785)

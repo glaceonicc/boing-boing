@@ -16,7 +16,7 @@ text = "credits
 playtesters:
 - Turek
 - Filip (krystian)
-- "
+- NartiPl"
 label_settings = SubResource("LabelSettings_xrna5")
 
 [node name="Label2" type="Label" parent="." unique_id=153366224]

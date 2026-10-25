@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b2oyito4vyafe"]
+
+[ext_resource type="Texture2D" uid="uid://di8vn5vdv6xxi" path="res://textures/menu/gameoverbg.png" id="1_cm05p"]
+
+[node name="gameover" type="Node2D" unique_id=1111260371]
+
+[node name="bg" type="Sprite2D" parent="." unique_id=523052182]
+position = Vector2(144, 81)
+texture = ExtResource("1_cm05p")

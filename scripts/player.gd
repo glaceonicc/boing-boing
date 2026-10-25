@@ -33,6 +33,12 @@ var active = false # if you started playing (press space to start)
 
 @export var levelname: String
 
+# how many points in this level do you need to get to get the golden and chroma flowers:
+@export var flowerbar1: int
+@export var flowerbar2: int
+@export var flowerbar3: int
+@export var chromabar: int
+
 func _ready() -> void:
 	position.x = startpos_x
 	position.y = startpos_y
@@ -175,8 +181,11 @@ func _on_death_area_exited(area: Area2D) -> void:
 func die():
 	if gl.pause == false:
 		if gl.hearts == 1:
-			gl.lives -= 1
-			get_tree().change_scene_to_file(tracks.current_world_scene)
+			if gl.lives == 1:
+				get_tree().change_scene_to_file("res://menu/gameover.tscn")
+			else:
+				gl.lives -= 1
+				get_tree().change_scene_to_file(tracks.current_world_scene)
 		else:
 			gl.hearts -= 1
 			if gl.checkpointnew == false: # respawning without a checkpoint
