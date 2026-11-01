@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dr5qwe3p6tecv" path="res://textures/elements/life.png" id="2_0ivwt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xrna5"]
-font_size = 12
+line_spacing = 1.0
+font_size = 9
 
 [node name="creditsmneu" type="Node2D" unique_id=131878246]
 script = ExtResource("1_cwm1p")
@@ -16,19 +17,27 @@ text = "credits
 playtesters:
 - Turek
 - Filip (krystian)
-- NartiPl"
+- NartiPl
+- fgzwgs
+- Pacioro
+- Szyszek
+- Cotton
+- Cwiklin"
 label_settings = SubResource("LabelSettings_xrna5")
 
 [node name="Label2" type="Label" parent="." unique_id=153366224]
-offset_left = 140.0
-offset_top = 24.0
-offset_right = 236.0
-offset_bottom = 73.0
+offset_left = 138.0
+offset_top = 9.0
+offset_right = 248.0
+offset_bottom = 106.0
 text = "inspirations:
 - super mario bros.
 - dadish
 - dragon land
-- deltarune"
+- deltarune
+references:
+- lucid blocks
+- orborb"
 label_settings = SubResource("LabelSettings_xrna5")
 
 [node name="Button" type="Button" parent="." unique_id=1122113049]

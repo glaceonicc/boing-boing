@@ -64,6 +64,9 @@ var chromaflowers = 0
 var stars = 0
 
 
+# playtesting stuff
+var testing = false
+
 
 signal die
 signal kill

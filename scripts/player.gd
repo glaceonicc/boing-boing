@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+# boing boing. the protagonist. he can bounce. bounce. (boing boing)
+
 # omg this is going to be painful
 
 # so i need to code my own gravity is_on_floor and jumping system thing because its gonna be a topdown game
@@ -16,6 +18,9 @@ var gravity = 10 #heheha i made gravity im newton
 var bounce = false # checks if you're in a bouncer
 var spike: int # how many spike tiles are you on
 var airtime := 0.0
+var bufferingthing = false
+var holdthing = false
+var can_jump
 
 var flicker = true # handles the flickering of blinkblocks
 var cycle = 1 # handles spike cycle
@@ -57,6 +62,9 @@ func _ready() -> void:
 	gl.a3 = flowerbar3
 	gl.a4 = chromabar
 	
+	if tracks.current_world_scene == "":
+		gl.testing = true
+	
 	gl.connect("kill", die)
 	gl.connect("boing", boing)
 	
@@ -85,6 +93,13 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y = move_toward(velocity.y, 0, 1.5 * SPEED * delta)
 			
+			if Input.is_action_just_pressed("jump"):
+				bufferingthing = true
+				$inputbuffering.start()
+			
+			if Input.is_action_pressed("jump"):
+				bufferingthing = true
+			
 			#ahhhhhhh how to physics
 			# so like: elevation is position.y, and if it's = 0 and you're touching floortiles, that means you're on the ground
 			# vel_y is kind of like velocity.y, but its not a vector
@@ -93,7 +108,11 @@ func _physics_process(delta: float) -> void:
 			
 			# i searched "how to make gravity" on the internet in order to understand this stuff ;-;
 			
-			if Input.is_action_just_pressed("jump") and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.04 and ground < 1:
+			if bufferingthing == true or holdthing == true:
+				can_jump = true
+			else:
+				can_jump = false
+			if can_jump == true and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.04 and ground < 1:
 				vel_y = JUMP_VELOCITY
 			elif elevation <= 0 and elevation > -4 and bounce == true:
 				vel_y = 5.0
@@ -187,46 +206,50 @@ func _on_death_area_exited(area: Area2D) -> void:
 func die():
 	if gl.pause == false:
 		if gl.hearts == 1:
-			if gl.lives == 1:
+			if gl.lives == 1 and gl.testing == false:
 				get_tree().change_scene_to_file("res://menu/gameover.tscn")
-			else:
+			elif gl.lives > 1:
 				gl.lives -= 1
 				get_tree().change_scene_to_file(tracks.current_world_scene)
+			else:
+				respawn()
 		else:
 			gl.hearts -= 1
-			if gl.checkpointnew == false: # respawning without a checkpoint
-				position.x = checkpoint_x
-				position.y = checkpoint_y
-				gl.star1 = false
-				gl.star2 = false
-				gl.star3 = false
-				gl.time = time
-				gl.epoints = 0
-				gl.bepoints = 0 
-				gl.cpoints = 0 
-				gl.bcpoints = 0 
-				gl.spoints = 0
-			else: # respawning from checkpoint
-				position = gl.checkpointxy
-				
-				gl.epoints = gl.Cepoints
-				gl.bepoints = gl.Cbepoints
-				gl.cpoints = gl.Ccpoints
-				gl.bcpoints = gl.Cbcpoints 
-				gl.spoints = gl.Cspoints
-				
-				gl.star1 = gl.Cstar1
-				gl.star2 = gl.Cstar2
-				gl.star3 = gl.Cstar3
-				gl.time = time
-			move_and_slide()
-			gl.emit_signal("die")
-			active = false
-			elevation = 0
-			$sprite.position.y = 0
-			$sprite.visible = true
-			$sprite.play("sprout")
-			vel_y = 0
+			respawn()
+
+func respawn():
+	if gl.checkpointnew == false: # respawning without a checkpoint
+		position.x = checkpoint_x
+		position.y = checkpoint_y
+		gl.star1 = false
+		gl.star2 = false
+		gl.star3 = false
+		gl.time = time
+		gl.epoints = 0
+		gl.bepoints = 0 
+		gl.cpoints = 0 
+		gl.bcpoints = 0 
+		gl.spoints = 0
+	else: # respawning from checkpoint
+		position = gl.checkpointxy
+		
+		gl.epoints = gl.Cepoints
+		gl.bepoints = gl.Cbepoints
+		gl.cpoints = gl.Ccpoints
+		gl.bcpoints = gl.Cbcpoints 
+		gl.spoints = gl.Cspoints
+		
+		gl.star1 = gl.Cstar1
+		gl.star2 = gl.Cstar2
+		gl.star3 = gl.Cstar3
+		gl.time = time
+	gl.emit_signal("die")
+	active = false
+	elevation = 0
+	$sprite.position.y = 0
+	$sprite.visible = true
+	$sprite.play("sprout")
+	vel_y = 0
 
 func blockflicker():
 	var t = float(BPM) / 4
@@ -254,3 +277,7 @@ func _on_spiketimer_timeout() -> void:
 
 func boing(): #the bounce you get when killing an enemy
 	vel_y = 2.5
+
+
+func _on_inputbuffering_timeout() -> void:
+	bufferingthing = false

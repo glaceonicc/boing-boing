@@ -97,6 +97,9 @@ debug_color = Color(0, 0, 0, 0.41960785)
 
 [node name="spiketimer" type="Timer" parent="." unique_id=73734834]
 
+[node name="inputbuffering" type="Timer" parent="." unique_id=1386144327]
+wait_time = 0.125
+
 [connection signal="area_entered" from="g" to="." method="_on_g_area_entered"]
 [connection signal="area_exited" from="g" to="." method="_on_g_area_exited"]
 [connection signal="area_entered" from="death" to="." method="_on_death_area_entered"]
@@ -104,3 +107,4 @@ debug_color = Color(0, 0, 0, 0.41960785)
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="flickertimer" to="." method="_on_flickertimer_timeout"]
 [connection signal="timeout" from="spiketimer" to="." method="_on_spiketimer_timeout"]
+[connection signal="timeout" from="inputbuffering" to="." method="_on_inputbuffering_timeout"]

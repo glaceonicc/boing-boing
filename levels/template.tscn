@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cnw8fbhemgec" path="res://scripts/area.gd" id="1_bnnnb"]
 [ext_resource type="PackedScene" uid="uid://cwnjbs3am5sqq" path="res://elements/floorblock.tscn" id="2_2j1ev"]
 [ext_resource type="PackedScene" uid="uid://cmuhtq4x883yq" path="res://elements/border.tscn" id="3_8l2a5"]
+[ext_resource type="PackedScene" uid="uid://d3q2nmkkciu1w" path="res://elements/bblock.tscn" id="3_w02mg"]
 [ext_resource type="PackedScene" uid="uid://6xxfmcituid5" path="res://elements/wallblock.tscn" id="4_vfava"]
 [ext_resource type="PackedScene" uid="uid://dwejv5jsvp0h2" path="res://elements/blinking_floor_red.tscn" id="5_jd5lg"]
 [ext_resource type="PackedScene" uid="uid://dj8vm6lebg7mq" path="res://elements/blinking_floor_blue.tscn" id="6_ul00k"]
@@ -10,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dyr0gq2eqd8gu" path="res://elements/spikewall.tscn" id="7_vfava"]
 [ext_resource type="PackedScene" uid="uid://dsh4j6t32julc" path="res://elements/crumbleblock.tscn" id="8_jd5lg"]
 [ext_resource type="PackedScene" uid="uid://bsad68itjqqd4" path="res://elements/coin.tscn" id="8_w02mg"]
+[ext_resource type="PackedScene" uid="uid://d4g73nd10sntv" path="res://elements/blinking_spikewall_blue.tscn" id="9_kweb5"]
 [ext_resource type="PackedScene" uid="uid://c6a3ffk3o6p6r" path="res://elements/heart.tscn" id="9_xobpx"]
 [ext_resource type="PackedScene" uid="uid://cqccxfos6fm24" path="res://elements/life.tscn" id="10_5thtb"]
+[ext_resource type="PackedScene" uid="uid://deprn5klhjgru" path="res://elements/blinking_spikewall_red.tscn" id="10_w02mg"]
 [ext_resource type="PackedScene" uid="uid://chuhn7ylax6dt" path="res://elements/moretime.tscn" id="11_dc8yu"]
 [ext_resource type="PackedScene" uid="uid://cek42fyk8hyum" path="res://elements/star1.tscn" id="12_8l2a5"]
 [ext_resource type="PackedScene" uid="uid://ke0k32p0w70l" path="res://elements/camera.tscn" id="12_kvvph"]
@@ -27,6 +30,9 @@ scenes/4/scene = ExtResource("5_jd5lg")
 scenes/5/scene = ExtResource("6_ul00k")
 scenes/6/scene = ExtResource("7_vfava")
 scenes/7/scene = ExtResource("8_jd5lg")
+scenes/8/scene = ExtResource("9_kweb5")
+scenes/9/scene = ExtResource("10_w02mg")
+scenes/10/scene = ExtResource("3_w02mg")
 
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
 physics_layer_0/collision_layer = 1
