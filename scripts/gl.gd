@@ -10,7 +10,8 @@ var play_elevation
 var checkpointnew
 var checkpointxy
 var active
-
+var can_jump # so it's called "can_jump" but it's like checking if space is pressed by the hold and bufferthings. so like.
+#use it instead of Input.is_action_just_pressed("jump").
 
 #level dynamic stuff
 var time
@@ -68,9 +69,11 @@ var stars = 0
 var testing = false
 
 
+# signals (why are they yellow bruh)
 signal die
 signal kill
 signal boing
+signal high_boing
 signal win
 
 

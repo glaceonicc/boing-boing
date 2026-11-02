@@ -20,7 +20,6 @@ var spike: int # how many spike tiles are you on
 var airtime := 0.0
 var bufferingthing = false
 var holdthing = false
-var can_jump
 
 var flicker = true # handles the flickering of blinkblocks
 var cycle = 1 # handles spike cycle
@@ -67,6 +66,7 @@ func _ready() -> void:
 	
 	gl.connect("kill", die)
 	gl.connect("boing", boing)
+	gl.connect("high_boing", high_boing)
 	
 	blockflicker()
 	spikecycle()
@@ -93,30 +93,20 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y = move_toward(velocity.y, 0, 1.5 * SPEED * delta)
 			
-			if Input.is_action_just_pressed("jump"):
-				bufferingthing = true
-				$inputbuffering.start()
-			
-			if Input.is_action_pressed("jump"):
-				bufferingthing = true
 			
 			#ahhhhhhh how to physics
 			# so like: elevation is position.y, and if it's = 0 and you're touching floortiles, that means you're on the ground
 			# vel_y is kind of like velocity.y, but its not a vector
 			# and JUMP_VELOCITY is what you add to velocity to jump
-			# and gravity. the thing that pulls you to the ground and makes you not want to get up anymore.
+			# and gravity. the thing that pulls you to the ground and makes you not want to get up anymore. ow.
 			
 			# i searched "how to make gravity" on the internet in order to understand this stuff ;-;
 			
-			if bufferingthing == true or holdthing == true:
-				can_jump = true
-			else:
-				can_jump = false
-			if can_jump == true and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.04 and ground < 1:
+			if gl.can_jump == true and ground >= 1 and elevation == 0 or Input.is_action_just_pressed("jump") and airtime < 0.04 and ground < 1:
 				vel_y = JUMP_VELOCITY
 			elif elevation <= 0 and elevation > -4 and bounce == true:
 				vel_y = 5.0
-			elif ground >= 1 and elevation <= 0 and elevation > -3:
+			elif ground >= 1 and elevation <= 0 and elevation > -4:
 				vel_y = 0
 				elevation = 0
 				airtime = 0.0
@@ -150,7 +140,7 @@ func _physics_process(delta: float) -> void:
 			z_index = 6
 			$shadow.visible = false
 			$dot.visible = false
-			if Input.is_action_just_pressed("jump"):
+			if gl.can_jump == true:
 				active = true
 				vel_y = JUMP_VELOCITY
 				$sprite.play("down")
@@ -159,6 +149,17 @@ func _physics_process(delta: float) -> void:
 				DisplayServer.window_set_title(levelname)
 				$timer.start()
 				move_and_slide()
+		
+		if Input.is_action_just_pressed("jump"):
+				bufferingthing = true
+				$inputbuffering.start()
+		if Input.is_action_pressed("jump"):
+			bufferingthing = true
+		if bufferingthing == true or holdthing == true:
+			gl.can_jump = true
+		else:
+			gl.can_jump = false
+		
 		gl.play_x = position.x
 		gl.play_y = position.y
 		gl.play_pos = position
@@ -278,6 +279,8 @@ func _on_spiketimer_timeout() -> void:
 func boing(): #the bounce you get when killing an enemy
 	vel_y = 2.5
 
+func high_boing(): #the bounce you get when jumping and killing an enemy at the same time
+	vel_y = 4.0
 
 func _on_inputbuffering_timeout() -> void:
 	bufferingthing = false

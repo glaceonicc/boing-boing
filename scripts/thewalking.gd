@@ -31,7 +31,10 @@ func _process(delta: float) -> void:
 					linear_velocity = Vector2(0, 0)
 				if inside == true:
 					if gl.play_elevation > 5 and gl.play_elevation < 12:
-						gl.emit_signal("boing")
+						if gl.can_jump == true:
+							gl.emit_signal("high_boing")
+						else:
+							gl.emit_signal("boing")
 						gl.epoints+= 100
 						killed = true
 					elif 0 <= gl.play_elevation and gl.play_elevation < 5:

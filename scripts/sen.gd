@@ -14,23 +14,14 @@ var killed = false
 @export var mecha = false
 
 var r = load("res://elements/rotator.tscn")
+#@onready var s = $spawn
 
 func _ready() -> void:
 	object = load(object)
 	$sprite.play("default")
 	gl.connect("die", reset)
 	base = position
-	var rah = 0.0
-	for i in count:
-		var ro = r.instantiate()
-		rah += 2 * PI / count
-		ro.rotation = rah
-		ro.speed = speed
-		ro.direction = direction
-		var obj = object.instantiate()
-		obj.position.x += range * 16
-		add_child(ro)
-		ro.add_child(obj)
+	spawn_children()
 
 func _process(delta: float) -> void:
 	if gl.active == true:
@@ -38,9 +29,16 @@ func _process(delta: float) -> void:
 			
 			if inside == true:
 				if gl.play_elevation > 5 and gl.play_elevation < 12 and mecha == false:
-					gl.emit_signal("boing")
-					gl.epoints+= 200
-					killed = true 
+						if gl.can_jump == true:
+							gl.emit_signal("high_boing")
+						else:
+							gl.emit_signal("boing")
+						gl.epoints+= 200
+						killed = true
+						for i in $spawn.get_children():
+							$spawn.remove_child(i)
+							i.queue_free()
+							print("kill")
 				elif 0 <= gl.play_elevation and gl.play_elevation < 5:
 					gl.emit_signal("kill")
 		else:
@@ -52,6 +50,7 @@ func reset():
 	position = base
 	killed = false
 	visible = true
+	spawn_children()
 
 func _on_kill_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collect"):
@@ -60,3 +59,16 @@ func _on_kill_area_entered(area: Area2D) -> void:
 func _on_kill_area_exited(area: Area2D) -> void:
 	if area.is_in_group("collect"):
 		inside = false
+
+func spawn_children():
+	var rah = 0.0
+	for i in count:
+		var ro = r.instantiate()
+		rah += 2 * PI / count
+		ro.rotation = rah
+		ro.speed = speed
+		ro.direction = direction
+		var obj = object.instantiate()
+		obj.position.x += range * 16
+		$spawn.add_child(ro)
+		ro.add_child(obj)

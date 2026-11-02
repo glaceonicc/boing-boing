@@ -20,7 +20,7 @@ size = Vector2(11.313711, 11.313711)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(9.899496, 9.899496)
 
-[node name="sen" type="RigidBody2D" unique_id=1394963580]
+[node name="mechasen" type="RigidBody2D" unique_id=1394963580]
 z_index = 4
 collision_layer = 2
 collision_mask = 2
@@ -48,6 +48,8 @@ rotation = 0.7853982
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="spawn" type="Node2D" parent="." unique_id=1118763225]
 
 [connection signal="area_entered" from="kill" to="." method="_on_kill_area_entered"]
 [connection signal="area_exited" from="kill" to="." method="_on_kill_area_exited"]
