@@ -55,6 +55,8 @@ func _ready() -> void:
 	gl.BPM = BPM
 	gl.hearts = 3
 	gl.points = 0
+	gl.combo = 0
+	gl.plus_combo = 0
 	
 	gl.a1 = flowerbar1
 	gl.a2 = flowerbar2
@@ -110,6 +112,8 @@ func _physics_process(delta: float) -> void:
 				vel_y = 0
 				elevation = 0
 				airtime = 0.0
+				gl.combo = 0
+				gl.plus_combo = 0
 			else:
 				vel_y -= gravity * delta
 				airtime += delta
@@ -278,9 +282,17 @@ func _on_spiketimer_timeout() -> void:
 
 func boing(): #the bounce you get when killing an enemy
 	vel_y = 2.5
+	gl.combo += 1
+	if gl.combo >= 2:
+		gl.plus_combo += 1
+		gl.bepoints += gl.plus_combo * 200
 
 func high_boing(): #the bounce you get when jumping and killing an enemy at the same time
 	vel_y = 4.0
+	gl.combo += 1
+	if gl.combo >= 2:
+		gl.plus_combo += 1
+		gl.bepoints += gl.plus_combo * 200
 
 func _on_inputbuffering_timeout() -> void:
 	bufferingthing = false

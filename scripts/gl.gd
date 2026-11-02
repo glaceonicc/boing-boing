@@ -12,6 +12,8 @@ var checkpointxy
 var active
 var can_jump # so it's called "can_jump" but it's like checking if space is pressed by the hold and bufferthings. so like.
 #use it instead of Input.is_action_just_pressed("jump").
+var combo # combo!!!!!!!!!!!!!11
+var plus_combo
 
 #level dynamic stuff
 var time
