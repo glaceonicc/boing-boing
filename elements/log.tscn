@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d0lhp5lwki7jy"]
+
+[ext_resource type="Script" uid="uid://bdy4k3x8vm64d" path="res://scripts/bullet.gd" id="1_pvmtw"]
+[ext_resource type="Texture2D" uid="uid://cyuxhpil6xpbd" path="res://textures/enemies/log_laser.png" id="2_pvmtw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(2, 44)
+
+[node name="log" type="Area2D" unique_id=178221536 groups=["spike"]]
+script = ExtResource("1_pvmtw")
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=303977938]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=471161174]
+rotation = -1.5707964
+texture = ExtResource("2_pvmtw")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

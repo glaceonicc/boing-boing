@@ -20,6 +20,8 @@ var spike: int # how many spike tiles are you on
 var airtime := 0.0
 var bufferingthing = false
 var holdthing = false
+var boingoverride = false
+var boings = 0 # for floring bounce
 
 var flicker = true # handles the flickering of blinkblocks
 var cycle = 1 # handles spike cycle
@@ -108,6 +110,10 @@ func _physics_process(delta: float) -> void:
 				vel_y = JUMP_VELOCITY
 			elif elevation <= 0 and elevation > -4 and bounce == true:
 				vel_y = 5.0
+			elif elevation >= 0 and elevation < 12 and boings >= 1 and gl.can_jump == true:
+				vel_y = 4.0
+			elif elevation >= 0 and elevation < 12 and boings >= 1:
+				vel_y = 2.5
 			elif ground >= 1 and elevation <= 0 and elevation > -4:
 				vel_y = 0
 				elevation = 0
@@ -195,6 +201,9 @@ func _on_g_area_exited(area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	gl.time -= 1
+	if gl.time < 0:
+		gl.lives -= 1
+		get_tree().change_scene_to_file(tracks.current_world_scene)
 
 
 func _on_death_area_entered(area: Area2D) -> void:
@@ -202,14 +211,19 @@ func _on_death_area_entered(area: Area2D) -> void:
 		spike += 1
 	if area.is_in_group("kill"):
 		die()
+	if area.is_in_group("boing"):
+		boings += 1
 
 
 func _on_death_area_exited(area: Area2D) -> void:
 	if area.is_in_group("spike"):
 		spike -= 1
+	if area.is_in_group("boing"):
+		boings -= 1
 
 func die():
 	if gl.pause == false:
+		$timer.stop()
 		if gl.hearts == 1:
 			if gl.lives == 1 and gl.testing == false:
 				get_tree().change_scene_to_file("res://menu/gameover.tscn")

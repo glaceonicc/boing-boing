@@ -113,7 +113,7 @@ offset_left = 10.0
 offset_top = 48.0
 offset_right = 175.0
 offset_bottom = 62.0
-text = "collectables obtained:"
+text = "collectable points:"
 label_settings = SubResource("LabelSettings_yf5fn")
 
 [node name="cbonus" type="Label" parent="." unique_id=608823688]
@@ -131,7 +131,7 @@ offset_left = 10.0
 offset_top = 70.0
 offset_right = 175.0
 offset_bottom = 84.0
-text = "enemies defeated:"
+text = "kill points:"
 label_settings = SubResource("LabelSettings_yf5fn")
 
 [node name="ebonus" type="Label" parent="." unique_id=1039251833]
@@ -149,7 +149,7 @@ offset_left = 10.0
 offset_top = 93.0
 offset_right = 175.0
 offset_bottom = 107.0
-text = "time left:"
+text = "hearts bonus:"
 label_settings = SubResource("LabelSettings_yf5fn")
 
 [node name="star" type="Label" parent="." unique_id=348949407]

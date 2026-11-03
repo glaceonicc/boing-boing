@@ -6,23 +6,37 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 54.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7km3k"]
+atlas = ExtResource("2_7km3k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyj2q"]
+atlas = ExtResource("2_7km3k")
+region = Rect2(16, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7km3k")
+"texture": SubResource("AtlasTexture_7km3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyj2q")
 }],
 "loop": 1,
 "name": &"flying",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7km3k")
+"texture": SubResource("AtlasTexture_7km3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyj2q")
 }],
 "loop": 1,
 "name": &"idle",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
@@ -48,7 +62,8 @@ debug_color = Color(0.83263934, 0.91502297, 1, 0.078431375)
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
 z_index = 4
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"idle"
+animation = &"flying"
+frame_progress = 0.9184179
 
 [node name="kill" type="Area2D" parent="." unique_id=107530660]
 

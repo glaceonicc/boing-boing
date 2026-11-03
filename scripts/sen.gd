@@ -38,13 +38,15 @@ func _process(delta: float) -> void:
 						for i in $spawn.get_children():
 							$spawn.remove_child(i)
 							i.queue_free()
-							print("kill")
 				elif 0 <= gl.play_elevation and gl.play_elevation < 5:
 					gl.emit_signal("kill")
 		else:
 			visible = false
 
 func reset():
+	for i in $spawn.get_children():
+		$spawn.remove_child(i)
+		i.queue_free()
 	go_vector = position
 	linear_velocity = Vector2(0, 0)
 	position = base

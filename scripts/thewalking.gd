@@ -1,5 +1,5 @@
 extends RigidBody2D
- # THE WALKING ( IT WALKS) BIG PAW CREATURE!!!!!!!!!!!!!!!!!!!!
+ # THE WALKING!!!!! IT WALKS!!!! (BIG PAW CREATURE)
 var sight = false
 var base
 var go_vector

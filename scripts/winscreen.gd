@@ -24,14 +24,14 @@ func _ready() -> void:
 	
 	$levelname.text = gl.lvlname
 	
-	gl.tpoints = gl.time * 10
+	gl.tpoints = gl.hearts * 1000
 	gl.points += gl.tpoints
 	
-	$c.text = "collectables collected: "+str(gl.cpoints)
+	$c.text = "collectable points: "+str(gl.cpoints)
 	$cbonus.text ="bonus: "+str(gl.bcpoints)
-	$e.text = "enemies defeated: "+str(gl.epoints)
+	$e.text = "kill points: "+str(gl.epoints)
 	$ebonus.text = "combo bonus: "+str(gl.bepoints)
-	$t.text = "time bonus:" + str(gl.tpoints)
+	$t.text = "hearts bonus:" + str(gl.tpoints)
 	if gl.star1 == true:
 		$star1.play("yes")
 	else:

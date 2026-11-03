@@ -8,7 +8,7 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(16, 16)
 
-[node name="wallblock" type="StaticBody2D" unique_id=1714314068]
+[node name="wallblock" type="StaticBody2D" unique_id=1714314068 groups=["wall"]]
 collision_layer = 3
 collision_mask = 3
 
