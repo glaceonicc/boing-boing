@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b4uq7dpdjeh45"]
 
-[ext_resource type="Script" uid="uid://b20inexafsiex" path="res://scripts/thewalking.gd" id="1_b5bfg"]
+[ext_resource type="Script" uid="uid://dml163yfuh61p" path="res://scripts/enemy.gd" id="1_b5bfg"]
 [ext_resource type="Texture2D" uid="uid://br1e3gvqr386n" path="res://textures/enemies/thewalking1.png" id="1_t2idg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
@@ -80,6 +80,9 @@ collision_mask = 2
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_b5bfg")
+speed = 1000
+points = 100
+movement = "chase"
 
 [node name="sight" type="Area2D" parent="." unique_id=974728487]
 

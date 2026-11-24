@@ -66,6 +66,31 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		tracks.get(tracks.current_world).get(tracks.current_point).get("locked").clear()
 		gl.pause = false
+		
+		if "gold1" + gl.lvlname in gl.goldenflowerlist:
+			pass
+		else:
+			gl.goldenflowerlist.append("gold1" + gl.lvlname)
+		if "gold2" + gl.lvlname in gl.goldenflowerlist:
+			pass
+		else:
+			gl.goldenflowerlist.append("gold2" + gl.lvlname)
+		if "gold3" + gl.lvlname in gl.goldenflowerlist:
+			pass
+		else:
+			gl.goldenflowerlist.append("gold3" + gl.lvlname)
+		
+		if "chroma" + gl.lvlname in gl.chromaflowerlist:
+			pass
+		else:
+			gl.chromaflowerlist.append("chroma" + gl.lvlname)
+		print(gl.goldenflowerlist)
+		gl.goldenflowers = gl.goldenflowerlist.size()
+		print(gl.goldenflowers)
+		print(gl.chromaflowerlist)
+		gl.chromaflowers = gl.chromaflowerlist.size()
+		print(gl.chromaflowers)
+		
 		get_tree().change_scene_to_file(tracks.current_world_scene)
 	$pbar.position.y = 137 -  (float($progress.value) / gl.a4 * 102)
 	$pbar/pointsbar.text = str(a)

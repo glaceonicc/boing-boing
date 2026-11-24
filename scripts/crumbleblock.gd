@@ -7,18 +7,20 @@ var inside = false
 
 func _ready() -> void:
 	$sprite.play("default")
+	gl.connect("die", reset)
 
 func _process(delta: float) -> void:
-	if inside == true and gl.play_elevation == 0 and broken == false:
+	if inside == true and gl.play_elevation == 0 and broken == false and gl.active == true:
 		$timer.start()
 		$sprite.play("crack")
 		broken = true
 
 
 func _on_timer_timeout() -> void:
-	$sprite.play("ows")
-	$hitbox.set_deferred("disabled", true)
-	$back.start()
+	if gl.active == true:
+		$sprite.play("ows")
+		$hitbox.set_deferred("disabled", true)
+		$back.start()
 
 
 
@@ -32,6 +34,12 @@ func _on_detect_area_exited(area: Area2D) -> void:
 
 
 func _on_back_timeout() -> void:
+	$hitbox.set_deferred("disabled", false)
+	broken = false
+	$sprite.play("default")
+
+func reset():
+	$back.stop()
 	$hitbox.set_deferred("disabled", false)
 	broken = false
 	$sprite.play("default")

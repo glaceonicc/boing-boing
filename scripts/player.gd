@@ -11,8 +11,8 @@ var SPEED = 600.0 # the thing to multiply the velocity things by
 var MAXSPEED = 125.0
 var JUMP_VELOCITY = 4.0 # like how high you jump i guess??
 
-var elevation = 0 # simulates position.y kinda i think. like position.y is now z and this is the y instead.
-var vel_y = 0# velocity.y. but like. i made it.
+var elevation = 0.0 # simulates position.y kinda i think. like position.y is now z and this is the y instead.
+var vel_y = 0.0 # velocity.y. but like. i made it.
 var ground: int # how many ground tiles are you on
 var gravity = 10 #heheha i made gravity im newton
 var bounce = false # checks if you're in a bouncer
@@ -116,7 +116,7 @@ func _physics_process(delta: float) -> void:
 				vel_y = 2.5
 			elif ground >= 1 and elevation <= 0 and elevation > -4:
 				vel_y = 0
-				elevation = 0
+				elevation = 0.0
 				airtime = 0.0
 				gl.combo = 0
 				gl.plus_combo = 0

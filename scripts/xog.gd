@@ -60,9 +60,8 @@ func _on_kill_area_exited(area: Area2D) -> void:
 
 func shoot():
 	if killed == false and gl.active == true:
-		var log = l.instantiate()
-		log.rotation = PI/2
-		add_child(log)
+		var logs = l.instantiate()
+		add_child(logs)
 
 func _on_timer_timeout() -> void:
 	shoot()

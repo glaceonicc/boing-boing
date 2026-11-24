@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dufhxsj1glfm8"]
+
+[ext_resource type="Script" uid="uid://7n0ogdg47eef" path="res://scripts/xog.gd" id="1_bf4cg"]
+[ext_resource type="Texture2D" uid="uid://2ecymaufk1d" path="res://textures/enemies/mechaxog.png" id="2_bf4cg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(8.000002, 46.000004)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(46.000008, 8.000002)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxtsn"]
+atlas = ExtResource("2_bf4cg")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfnrv"]
+atlas = ExtResource("2_bf4cg")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxtsn")
+}],
+"loop": 1,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfnrv")
+}],
+"loop": 1,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="xog" type="RigidBody2D" unique_id=1394963580]
+z_index = 4
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_bf4cg")
+mecha = true
+
+[node name="kill" type="Area2D" parent="." unique_id=107530660]
+rotation = -1.5707964
+
+[node name="hitbox" type="CollisionShape2D" parent="kill" unique_id=1028904047]
+position = Vector2(9.5367426e-07, -5.9604602e-08)
+rotation = -1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_57qmd")
+debug_color = Color(0.77269053, 0.15136263, 0.99999994, 0.41960785)
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=262030626]
+position = Vector2(0, -1.4901161e-07)
+rotation = -1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
+z_index = 4
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"open"
+
+[node name="Timer" type="Timer" parent="." unique_id=558221361]
+
+[connection signal="area_entered" from="kill" to="." method="_on_kill_area_entered"]
+[connection signal="area_exited" from="kill" to="." method="_on_kill_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

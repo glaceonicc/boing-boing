@@ -65,7 +65,8 @@ var lives = 5
 var goldenflowers = 0
 var chromaflowers = 0
 var stars = 0
-
+var goldenflowerlist = []
+var chromaflowerlist = []
 
 # playtesting stuff
 var testing = false

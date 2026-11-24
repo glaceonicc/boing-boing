@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cajju3dwy8cum"]
+
+[ext_resource type="Script" uid="uid://c3q3tqnbsuoh" path="res://scripts/buddy.gd" id="1_w81pg"]
+[ext_resource type="Texture2D" uid="uid://br8ykb2dr46qh" path="res://textures/worldmap/floring.png" id="2_f2ein"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w81pg"]
+atlas = ExtResource("2_f2ein")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w81pg")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2im18"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhu1m"]
+radius = 7.017834
+
+[node name="buddy" type="RigidBody2D" unique_id=1394963580 groups=["boing"]]
+z_index = 4
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_w81pg")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
+z_index = 4
+sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"idle"
+
+[node name="kill" type="Area2D" parent="." unique_id=107530660 groups=["boing"]]
+
+[node name="hitbox" type="CollisionShape2D" parent="kill" unique_id=1028904047 groups=["boing"]]
+shape = SubResource("CircleShape2D_2im18")
+debug_color = Color(0.77269053, 0.15136263, 0.99999994, 0.41960785)
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=262030626 groups=["boing"]]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_yhu1m")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[connection signal="area_entered" from="kill" to="." method="_on_kill_area_entered"]
+[connection signal="area_exited" from="kill" to="." method="_on_kill_area_exited"]

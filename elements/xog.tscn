@@ -3,12 +3,6 @@
 [ext_resource type="Script" uid="uid://7n0ogdg47eef" path="res://scripts/xog.gd" id="1_e8d1l"]
 [ext_resource type="Texture2D" uid="uid://cq0xdu3aolyx" path="res://textures/enemies/xog.png" id="2_e8d1l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(46.000008, 8.000002)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(46.000008, 8.000002)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxj00"]
 atlas = ExtResource("2_e8d1l")
 region = Rect2(0, 16, 48, 16)
@@ -36,6 +30,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(46.000008, 8.000002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(46.000008, 8.000002)
+
 [node name="xog" type="RigidBody2D" unique_id=1394963580]
 z_index = 4
 collision_layer = 2
@@ -44,24 +44,27 @@ gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_e8d1l")
 
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
+z_index = 4
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"open"
+
 [node name="kill" type="Area2D" parent="." unique_id=107530660]
 
 [node name="hitbox" type="CollisionShape2D" parent="kill" unique_id=1028904047]
 position = Vector2(0, -1.7881393e-07)
+rotation = -1.5707964
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_57qmd")
 debug_color = Color(0.77269053, 0.15136263, 0.99999994, 0.41960785)
 
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=262030626]
 position = Vector2(0, -1.4901161e-07)
+rotation = -1.5707964
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0, 0.6, 0.69803923, 1)
-
-[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1926727175]
-z_index = 4
-sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"open"
 
 [node name="Timer" type="Timer" parent="." unique_id=558221361]
 
